@@ -163,6 +163,14 @@ export class A11yTree {
 		return out.join('\n');
 	}
 
+	static stringifyNode(node: AxNode): string {
+		const name = node.name !== undefined ? ` "${A11yTree.escape(node.name)}"` : '';
+		const attrs = Object.entries(node.attributes)
+			.map(([k, v]) => `${k}="${A11yTree.escape(v)}"`)
+			.join(' ');
+		return `uid=${node.uid} ${node.role}${name}${attrs ? ' ' + attrs : ''}`;
+	}
+
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 	//

@@ -83,6 +83,8 @@ A11yQuery.querySelector(root, '#7');
 
 The selector syntax is modelled on CSS selectors, adapted for accessibility tree structures.
 
+The spec is documented in full in [docs/spec_a11y_selector_language.md](./docs/spec_a11y_selector_language.md).
+
 ### Role selector
 
 Matches nodes by their accessibility role.

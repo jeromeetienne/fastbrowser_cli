@@ -72,7 +72,7 @@ class MainHelper {
                         process.stdout.write(A11yTree.stringify(ancestorTree) + '\n');
                 } else {
                         for (const node of nodes) {
-                                process.stdout.write(A11yTree.stringify(node) + '\n');
+                                process.stdout.write(A11yTree.stringifyNode(node) + '\n');
                         }
                 }
         }
@@ -97,11 +97,13 @@ function main(): void {
                 .requiredOption('-f, --file <path>', 'Path to accessibility tree text file')
                 .option('-a, --all', 'Return all matches (default: first match only)')
                 .option('-w, --with-ancestor', 'Output ancestor tree containing all matched nodes')
-                .addHelpText('after', `
-Examples:
-  npx a11y_parse --file page.a11y.txt button
-  npx a11y_parse --file page.a11y.txt --all 'link[url*="example.com"]'
-  npx a11y_parse --file page.a11y.txt --all -w heading`)
+                .addHelpText('after', [
+                        '',
+                        'Examples:',
+                        '  npx a11y_parse --file page.a11y.txt button',
+                        '  npx a11y_parse --file page.a11y.txt --all \'link[url*="example.com"]\'',
+                        '  npx a11y_parse --file page.a11y.txt --all -w heading',
+                ].join('\n'))
                 .parse(process.argv);
 
         const opts = program.opts<{ file: string; all: boolean; withAncestor: boolean }>();
@@ -120,7 +122,7 @@ Examples:
                 if (node === undefined) {
                         process.exit(1);
                 }
-                process.stdout.write(A11yTree.stringify(node) + '\n');
+                process.stdout.write(A11yTree.stringifyNode(node) + '\n');
         }
 }
 
