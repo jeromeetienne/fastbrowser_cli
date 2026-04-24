@@ -24,6 +24,20 @@ npm install a11y_parse
 
 ---
 
+## How to Use as a CLI Tool
+Good trick to get the accessibility tree of any webpage: use the `fastbrowser_cli` SKILL.md to take a snapshot of the current page's 
+accessibility tree, which outputs in the text format that `A11yTree.parse` can consume.
+
+```
+npx fastbrowser_cli take_snapshot | tail -n +2 > page.a11y.txt
+```
+
+```
+npx a11y_parse --file page.a11y.txt 'link[href^="https"]'
+```
+
+---
+
 ## Build
 
 ```bash
