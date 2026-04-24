@@ -183,7 +183,7 @@ npx fastbrowser_cli click --selector "#1_42"
 npx fastbrowser_cli click -s 'button[name="Submit"]'
 
 # Fill a single form field - selector can be a uid (#1_7) or any CSS-like selector
-npx fastbrowser_cli fill_form -s 'textbox[name="Email"]' --value "hello@example.com"
+npx fastbrowser_cli fill_form -s 'textbox[name="Email"]' -v "hello@example.com"
 
 # Press a comma-separated sequence of keys (literals and named keys both work)
 npx fastbrowser_cli press_keys --keys "Tab, Tab, Enter"
@@ -221,7 +221,7 @@ Example `demo.fbs`:
 ```
 # open a page and interact
 new_page --url https://example.com
-fill_form -s 'textbox[name="Email"]' --value 'hello@example.com'
+fill_form -s 'textbox[name="Email"]' -v 'hello@example.com'
 press_keys --keys "Tab, Enter"
 ```
 

@@ -1,10 +1,11 @@
 {
     "name": "fastbrowser_cli",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "description": "",
     "main": "dist/fastbrowser_cli/fastbrowser_cli.js",
     "bin": {
-        "fastbrowser_cli": "./dist/fastbrowser_cli/fastbrowser_cli.js"
+        "fastbrowser_cli": "./dist/fastbrowser_cli/fastbrowser_cli.js",
+        "fastbrowser_mcp": "./dist/fastbrowser_mcp/fastbrowser_mcp.js"
     },
     "scripts": {
         "start:fastbrowser_mcp": "npx tsx ./src/fastbrowser_mcp/fastbrowser_mcp.ts",

@@ -13,6 +13,19 @@ A lighter alternative to Chrome DevTools MCP or Puppeteer, designed for AI agent
   - It means faster/cheaper LLM iterations when used in an agent loop. 
   - It means more accurate/better quality responses from the LLM as well, since it has less irrelevant info to parse through.
 
+## How to install the CLI tool for claude
+
+### How to install the SKILL.md
+```
+# goto the claude directory
+cd ~/.claude
+# install the fastbrowser_cli skill
+npx fastbrowser_cli install
+```
+
+### How to install the MCP server
+
+
 ## Architecture
 
 Three components ship together in this package:
