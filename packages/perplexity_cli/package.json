@@ -1,0 +1,31 @@
+{
+	"name": "perplexity_cli",
+	"version": "1.0.0",
+	"description": "CLI for searching the web using Perplexity AI",
+	"main": "dist/src/cli.js",
+	"bin": {
+		"perplexity-cli": "./dist/src/cli.js",
+		"perplexity_cli": "./dist/src/cli.js"
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"postbuild": "chmod +x ./dist/src/cli.js",
+		"typecheck": "tsc --noEmit",
+		"dev": "tsx ./src/cli.ts",
+		"start": "node dist/src/cli.js",
+		"test": "node --require tsx/cjs --test tests/*.test.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"dependencies": {
+		"@perplexity-ai/perplexity_ai": "latest",
+		"commander": "^14.0.3"
+	},
+	"devDependencies": {
+		"@types/node": "^20.0.0",
+		"tsx": "^4.21.0",
+		"typescript": "^5.3.3"
+	}
+}
