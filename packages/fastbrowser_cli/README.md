@@ -5,7 +5,8 @@ Control a live Chrome browser from the command line: navigate, click, fill forms
 A lighter alternative to Chrome DevTools MCP or Puppeteer, designed for AI agents and shell workflows. A persistent HTTP daemon keeps an MCP connection to the browser alive so each command incurs minimal latency.
 
 - rely on [chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) for robust browser control
-- rely on [a11y_parse](https://github.com/jeromeetienne/skillmd_collection/tree/main/packages/a11y_parse) for accessibility tree parsing and querying. Especially a CSS-like selector syntax optimized for the accessibility tree.
+- rely on [a11y_parse](https://github.com/jeromeetienne/skillmd_collection/tree/main/packages/a11y_parse) for accessibility tree parsing and querying. 
+  Especially a CSS-like selector syntax optimized for the accessibility tree.
 - expose a curated, efficient toolset optimized for AI agent use cases
 - minimize the required round-trips and boilerplate to perform common tasks
 - minimize the output size, thus reducing LLM input size and parsing complexity. 
