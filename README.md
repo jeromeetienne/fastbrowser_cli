@@ -4,6 +4,14 @@ A monorepo of Claude Code agent skills and CLI tools. Each package ships a `SKIL
 
 ## Packages
 
+| Package | Description |
+|---------|-------------|
+| [a11y_parse](packages/a11y_parse/README.md) | Accessibility tree parser and CSS-like query engine |
+| [fastbrowser_cli](packages/fastbrowser_cli/README.md) | CLI daemon for controlling Chrome from shell or AI agents |
+| [business_analyst_cli](packages/business_analyst_cli/README.md) | Business modeling, trend analysis, and strategic planning CLI |
+| [bsky_client](packages/bsky_client/README.md) | Bluesky social network CLI (posts, replies, likes, search) |
+| [perplexity_cli](packages/perplexity_cli/README.md) | Web search and deep research CLI via Perplexity AI |
+
 ### [a11y_parse](packages/a11y_parse/README.md)
 
 A TypeScript library for parsing and querying accessibility trees using a CSS-inspired selector syntax. It is the query layer used by `fastbrowser_cli`.
