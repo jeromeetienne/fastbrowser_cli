@@ -12,6 +12,7 @@ import * as A11yParse from "../../../a11y_parse/dist/src/index.js";
 
 // local imports
 import { McpMyClient } from "./libs/mcp_client.js";
+import { Client as McpClient } from "@modelcontextprotocol/sdk/client/index.js";
 import { McpProxy } from "./libs/mcp_proxy.js";
 import { ResponseFormatter } from "./libs/response_formatter.js";
 import { FastBrowserMcpTarget } from './fastbrowser_types.js';
@@ -451,7 +452,9 @@ class MainHelper {
 
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
-	//	
+	//	.commandMcpServer: the main entry point for starting the MCP proxy server, which connects to the MCP 
+	// 	target (e.g. chrome-devtools-mcp), proxies tools from the MCP target, and registers external tools that 
+	// 	are implemented in terms of calls to the MCP target.
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -591,6 +594,13 @@ async function main() {
 			});
 		});
 
+	// display help if no command is provided
+	if (process.argv.length < 3) {
+		program.help();
+		process.exit(1);
+	}
+
+	// Parse the command-line arguments and execute the appropriate command action.
 	program.parse(process.argv);
 }
 
