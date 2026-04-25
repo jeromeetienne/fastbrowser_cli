@@ -8,7 +8,7 @@ import { Command } from 'commander';
 import express from 'express';
 
 // local imports
-import { McpClient } from '../fastbrowser_mcp/libs/mcp_client.js';
+import { McpMyClient } from '../fastbrowser_mcp/libs/mcp_client.js';
 import { Routes } from './libs/routes.js';
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -27,9 +27,10 @@ class MainHelper {
 	}): Promise<void> {
 		// Spawn fastbrowser-mcp as a subprocess and hold a persistent MCP client to it.
 		const fastbrowserMcpEntry = Path.resolve(__dirname, '..', 'fastbrowser_mcp', 'fastbrowser_mcp.js');
-		const mcpClient = new McpClient({
+		const mcpClient = new McpMyClient({
 			name: 'fastbrowser-httpd',
 			version: '1.0.0',
+			mcpTarget: 'chrome_devtools',
 			transport: {
 				type: 'stdio',
 				command: process.execPath,

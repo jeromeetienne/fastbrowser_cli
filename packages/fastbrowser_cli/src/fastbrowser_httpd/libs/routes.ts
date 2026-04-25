@@ -2,7 +2,7 @@
 import type { Express, Request, Response } from 'express';
 
 // local imports
-import { McpClient } from '../../fastbrowser_mcp/libs/mcp_client.js';
+import { McpMyClient } from '../../fastbrowser_mcp/libs/mcp_client.js';
 import { TOOL_SCHEMAS, ToolResponseSchema } from './tool-schemas.js';
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12,7 +12,7 @@ import { TOOL_SCHEMAS, ToolResponseSchema } from './tool-schemas.js';
 ///////////////////////////////////////////////////////////////////////////////
 
 export class Routes {
-	static register(app: Express, mcpClient: McpClient): void {
+	static register(app: Express, mcpClient: McpMyClient): void {
 		app.get('/health', (_req: Request, res: Response) => {
 			res.json({ ok: true });
 		});

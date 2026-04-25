@@ -7,7 +7,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { convertJsonSchemaToZod } from 'zod-from-json-schema';
 
 // local imports
-import { McpClient } from "./mcp_client.js";
+import { McpMyClient } from "./mcp_client.js";
 
 export class McpProxy {
 	private _mcpServer: McpServer;
@@ -31,7 +31,7 @@ export class McpProxy {
 		return this._mcpServer;
 	}
 
-	async proxyToolCall(mcpClient: McpClient, toolName: string) {
+	async proxyToolCall(mcpClient: McpMyClient, toolName: string) {
 		const mcpClientTools = await mcpClient.listTools()
 		const mcpClientTool = mcpClientTools.find((tool) => tool.name === toolName);
 		Assert.ok(mcpClientTool !== undefined, `Tool ${toolName} not found in mcp client tools`)

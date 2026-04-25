@@ -34,7 +34,9 @@ export interface McpClientOptions {
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-export class McpClient {
+// TODO remove this function - it seems to do vastly nothing - more confusing that helpful
+// - i use the McpServer directly, and i got a wrapper for the client... discrepancy is confusing
+export class McpMyClient {
 	private readonly client: Client;
 	private transport?: Transport;
 	private mcpTarget: FastBrowserMcpTarget;
