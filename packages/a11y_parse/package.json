@@ -7,8 +7,8 @@
         "a11y_parse": "dist/src/cli.js"
     },
     "scripts": {
-        "build": "tsc -p tsconfig.json",
-        "typecheck": "tsc --noEmit",
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
         "dev": "npx tsx ./src/cli.ts",
         "publish:all": "npm run build && npm version patch && npm publish --access public",
         "test": "npx tsx --test 'tests/**/*.test.ts'"
