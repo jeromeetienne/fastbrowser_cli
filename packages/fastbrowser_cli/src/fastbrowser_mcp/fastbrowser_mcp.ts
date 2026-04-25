@@ -40,8 +40,6 @@ export {
 	type QuerySelectorsFirstInput,
 };
 
-const __dirname = Path.dirname(new URL(import.meta.url).pathname);
-
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 //	
@@ -606,7 +604,7 @@ class MainHelper {
 
 async function main() {
 	// Redirect process.stderr to a log file, so that the MCP communication is not polluted by logs.
-	const logFile = Path.resolve(__dirname, `../../outputs/fastbrowser_mcp_${new Date().toISOString()}.log`);
+	const logFile = Path.resolve(import.meta.dirname, `../../outputs/fastbrowser_mcp_${new Date().toISOString()}.log`);
 	const logStream = Fs.createWriteStream(logFile, { flags: 'a' });
 	process.stderr.write = logStream.write.bind(logStream);
 

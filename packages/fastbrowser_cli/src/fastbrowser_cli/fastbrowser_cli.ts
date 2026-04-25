@@ -132,7 +132,7 @@ class MainHelper {
 	}
 
 	static async runInstall(skillFolder: string): Promise<void> {
-		const sourceSkillMd = path.resolve(__dirname, '../../skills/fastbrowser/SKILL.md');
+		const sourceSkillMd = path.resolve(import.meta.dirname, '../../skills/fastbrowser/SKILL.md');
 		const targetDir = path.resolve(skillFolder, 'skills', 'fastbrowser');
 		const targetSkillMd = path.join(targetDir, 'SKILL.md');
 		try {
@@ -263,6 +263,14 @@ async function main(): Promise<void> {
 			console.log(`fastbrowser server at ${serverUrl}: ${serverStatus}`);
 		});
 
+	serverCmd
+		.command('restart')
+		.description('Restart the fastbrowser HTTP server')
+		.action(async (_opts, cmd: Command) => {
+			const serverUrl = MainHelper.getServerUrlFromCmd(cmd);
+			await ServerManager.stop(serverUrl);
+			await ServerManager.start(serverUrl);
+		});
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 	//	
