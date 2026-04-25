@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+// node imports
+import * as Assert from 'node:assert/strict';
+
 // npm imports
 import { Command, Option } from 'commander';
 import { z } from "zod";
@@ -8,6 +11,7 @@ import * as A11yParse from "../../../a11y_parse/dist/src/index.js";
 // local imports
 import { McpClient } from "./libs/mcp_client.js";
 import { McpProxy } from "./libs/mcp_proxy.js";
+import { FastBrowserMcpTarget } from './fastbrowser_types.js';
 import {
 	QuerySelectorInputSchema,
 	QuerySelectorsInputSchema,
@@ -30,8 +34,6 @@ export {
 	type QuerySelectorsFirstInput,
 };
 
-export type FastBrowserMcpTarget = 'chrome_devtools' | 'playwright';
-
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 //	
@@ -39,6 +41,65 @@ export type FastBrowserMcpTarget = 'chrome_devtools' | 'playwright';
 ///////////////////////////////////////////////////////////////////////////////
 
 class MainHelper {
+
+
+	private static async _getSnapshotTree(mcpClient: McpClient): Promise<A11yParse.AxNode> {
+		let snapshotText: string;
+
+		///////////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////
+		//	
+		///////////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////
+		
+		const mcpTarget = await mcpClient.getMcpTarget();
+		if (mcpTarget === 'chrome_devtools') {
+			// take a snapshot to get the latest accessibility tree
+			const response = await mcpClient.callTool('take_snapshot', {});
+			const responseText = response.content[0]
+			if (responseText.type !== "text") throw new Error("Unexpected content type");
+
+			// get the snapshot text and remove the first line (snapshot metadata)	
+			snapshotText = responseText.text;
+			snapshotText = snapshotText.split('\n').slice(1).join('\n');
+		} else if (mcpTarget === 'playwright') {
+			const response = await mcpClient.callTool('get-text-snapshot', {});
+			const responseText = response.content[0]
+			if (responseText.type !== "text") throw new Error("Unexpected content type");
+			snapshotText = responseText.text;
+
+			snapshotText = await this.convertSnapshotTextPlaywrightToChromeDevtools(snapshotText);
+		} else {
+			throw new Error(`Unsupported MCP target: ${mcpTarget}`);
+		}
+
+		// sanity check
+		Assert.ok(snapshotText !== undefined, "Snapshot text is empty");
+
+		// log to console for debugging
+		// console.log("Snapshot text content:");
+		// console.log(snapshotText);
+
+		// parse the accessibility tree
+		const a11yTree = A11yParse.A11yTree.parse(snapshotText);
+
+		// return the parsed accessibility tree
+		return a11yTree
+	}
+
+	private static async convertSnapshotTextPlaywrightToChromeDevtools(snapshotText: string): Promise<string> {
+		// Playwright's get-text-snapshot tool returns a different format than chrome-devtools-mcp's take_snapshot tool. We need to 
+		// convert it to the chrome-devtools-mcp format so that we can reuse the same parsing and selector logic.
+		// The main differences are:
+		// - Playwright does not include the snapshot metadata line at the beginning of the snapshot text, so we need to add a 
+		// dummy metadata line to make it compatible with our existing parsing logic.
+		// - Playwright's snapshot text uses 2-space indentation, while chrome-devtools-mcp's snapshot text uses 4-space indentation. 
+		// We need to convert the indentation to make it compatible with our existing parsing logic.
+
+		
+		return 'dummy'
+	}
+
 	/**
 	 * Takes a snapshot of the current page to get the latest accessibility tree, and parses it into an AxNode tree structure.
 	 * @param mcpClient The MCP client to use for taking a snapshot.
@@ -51,26 +112,6 @@ class MainHelper {
 		const selectedNodes = A11yParse.A11yQuery.querySelectorAll(a11yTree, selector);
 		if (selectedNodes.length === 0) throw new Error(`No node matched selector '${selector}'`);
 		return selectedNodes[0].uid;
-	}
-
-	private static async _getSnapshotTree(mcpClient: McpClient): Promise<A11yParse.AxNode> {
-		// take a snapshot to get the latest accessibility tree
-		const response = await mcpClient.callTool('take_snapshot', {});
-		const responseText = response.content[0]
-		if (responseText.type !== "text") throw new Error("Unexpected content type");
-
-		// get the snapshot text and remove the first line (snapshot metadata)	
-		let snapshotText = responseText.text;
-		snapshotText = snapshotText.split('\n').slice(1).join('\n');
-
-		// log to console for debugging
-		// console.log("Snapshot text content:");
-		// console.log(snapshotText);
-
-		// parse the accessibility tree
-		const a11yTree = A11yParse.A11yTree.parse(snapshotText);
-
-		return a11yTree
 	}
 
 	/**
@@ -155,13 +196,13 @@ class MainHelper {
 	///////////////////////////////////////////////////////////////////////////////
 
 	static async commandMcpServer({
-		mcpTarget = 'chrome_devtools',
+		mcpTarget,
 		verbose = false,
 	}: {
 		mcpTarget?: FastBrowserMcpTarget,
 		verbose?: boolean
 	}): Promise<void> {
-
+		debugger
 		///////////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////////
 		//	mcp client
@@ -174,6 +215,12 @@ class MainHelper {
 			mcpCommand = "npx";
 			mcpArgs = ["chrome-devtools-mcp@latest", "--autoconnect", "--no-performance-crux", "--no-usage-statistics"];
 		} else if (mcpTarget === 'playwright') {
+			// npx @playwright/mcp@latest --cdp-endpoint=chrome
+			// npx @playwright/mcp@latest --cdp-endpoint=http://localhost:9222
+			// npx @playwright/mcp@latest --extension
+			// 
+			// https://playwright.dev/mcp/configuration/browser-extension#connect-via-browser-extension
+			// https://github.com/microsoft/playwright/tree/main/packages/extension
 			mcpCommand = "npx";
 			mcpArgs = ["playwright-mcp@latest", "--extension"];
 		} else {
@@ -183,8 +230,9 @@ class MainHelper {
 		// Create the mcp client toward the official chrome-devtools-mcp tool, which provides access to a Chrome tab's accessibility 
 		// tree and allows us to take snapshots and query the tree with selectors.
 		const mcpClient = new McpClient({
-			name: "my-app",
-			version: "0.1.0",
+			name: "fastbrowser_mcp_proxy_client",
+			version: "1.0.0",
+			mcpTarget,
 			transport: {
 				type: "stdio",
 				command: mcpCommand,
@@ -258,9 +306,9 @@ class MainHelper {
 			])
 		} else if (mcpTarget === 'playwright') {
 			toolsToProxys.push(...[
-				'browser_tabs',
-				'browser_navigate',
-				'browser_snapshot',
+				'init-browser',
+				'execute-code',
+				'get-text-snapshot',
 			])
 		} else {
 			throw new Error(`Unsupported MCP type: ${mcpTarget}`);
@@ -485,12 +533,12 @@ async function main() {
 		.command('mcp_server')
 		.description('Start the MCP proxy server')
 		.option('-v, --verbose', 'Enable verbose logging')
-		.addOption(
-			new Option('-b, --mcp_target <mcpBase>', 'the MCP> of MCP to run')
-				.choices(['chrome_devtools', 'playwright'])
-				.default('chrome_devtools')
-		).action(async ({ verbose, mcpTarget }: { verbose?: boolean, mcpTarget: FastBrowserMcpTarget }) => {
-			await MainHelper.commandMcpServer({ verbose, mcpTarget });
+		.addOption(new Option('-b, --mcp_target <mcpTarget>', 'the MCP> of MCP to run').choices(['chrome_devtools', 'playwright']).default('chrome_devtools'))
+		.action(async (options: { verbose?: boolean, mcp_target: FastBrowserMcpTarget }) => {
+			await MainHelper.commandMcpServer({
+				mcpTarget: options.mcp_target,
+				verbose: options.verbose,
+			});
 		});
 
 	program.parse(process.argv);

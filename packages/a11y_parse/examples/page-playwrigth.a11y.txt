@@ -1,0 +1,1736 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Welcome to the Jungle logo" [ref=e7] [cursor=pointer]:
+            - /url: /fr
+            - img "Welcome to the Jungle logo" [ref=e8]
+          - navigation "main navigation" [ref=e9]:
+            - list [ref=e10]:
+              - listitem [ref=e11]:
+                - link "Trouver un job" [ref=e12] [cursor=pointer]:
+                  - /url: /fr/jobs
+                  - paragraph [ref=e13]: Trouver un job
+              - listitem [ref=e14]:
+                - link "Trouver une entreprise" [ref=e15] [cursor=pointer]:
+                  - /url: /fr/companies
+                  - paragraph [ref=e16]: Trouver une entreprise
+              - listitem [ref=e17]:
+                - link "Média" [ref=e18] [cursor=pointer]:
+                  - /url: /fr/media
+                  - paragraph [ref=e19]: Média
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e24]:
+              - textbox "common.global-search-input" [ref=e25]:
+                - /placeholder: Cherchez un job, une entreprise, un article
+              - generic:
+                - img
+            - link "Employeurs" [ref=e26] [cursor=pointer]:
+              - /url: https://solutions.welcometothejungle.com/?utm_source=welcometothejungle.com&utm_medium=referral&utm_campaign=cta_become_customer_header
+              - generic [ref=e27]: Employeurs
+          - generic [ref=e28]:
+            - generic [ref=e29]:
+              - button "Candidatures" [ref=e30] [cursor=pointer]:
+                - img [ref=e32]
+                - paragraph [ref=e34]: Candidatures
+              - button "Opportunités" [ref=e35] [cursor=pointer]:
+                - img [ref=e37]
+                - paragraph [ref=e39]: Opportunités
+            - button "Se connecter" [ref=e40] [cursor=pointer]:
+              - img [ref=e42]
+              - paragraph [ref=e44]:
+                - generic [ref=e45]: Se connecter
+    - generic [ref=e47]:
+      - tablist [ref=e50]:
+        - tab "Découvrir mes matchs Beta" [ref=e51] [cursor=pointer]:
+          - img [ref=e52]
+          - text: Découvrir mes matchs
+          - paragraph [ref=e55]: Beta
+        - tab "Explorer" [selected] [ref=e56] [cursor=pointer]:
+          - img [ref=e57]
+          - text: Explorer
+      - generic [ref=e60]:
+        - generic [ref=e62]:
+          - generic [ref=e64]:
+            - img [ref=e66]
+            - combobox "Recherchez par job, mot-clé ou entreprise" [ref=e68]: machine learning
+            - button "Tout effacer" [ref=e70] [cursor=pointer]:
+              - img [ref=e71]
+          - button "Astuces de recherche" [ref=e74] [cursor=pointer]:
+            - img [ref=e75]
+        - generic [ref=e82]:
+          - img [ref=e84]
+          - combobox "Ville, région ou pays" [ref=e86]: France
+          - button "Tout effacer" [ref=e88] [cursor=pointer]:
+            - img [ref=e89]
+        - button "Type de job" [ref=e92] [cursor=pointer]:
+          - img [ref=e93]
+          - generic [ref=e95]: Type de job
+          - img [ref=e96]
+      - generic [ref=e98]:
+        - generic [ref=e101]:
+          - list [ref=e102]:
+            - listitem [ref=e103] [cursor=pointer]:
+              - generic [ref=e104]:
+                - img [ref=e105]
+                - generic [ref=e107]: Salaire affiché
+              - generic [ref=e109]: "78"
+            - listitem [ref=e110] [cursor=pointer]:
+              - generic [ref=e111]:
+                - img [ref=e112]
+                - generic [ref=e114]: Télétravail possible
+              - generic [ref=e116]: "356"
+            - listitem [ref=e117] [cursor=pointer]:
+              - generic [ref=e118]:
+                - img [ref=e119]
+                - generic [ref=e121]: Parentalité flexible
+              - generic [ref=e123]: "217"
+            - listitem [ref=e124] [cursor=pointer]:
+              - generic [ref=e125]:
+                - img [ref=e126]
+                - generic [ref=e128]: Nomade digital
+              - generic [ref=e130]: "4"
+            - listitem [ref=e131] [cursor=pointer]:
+              - generic [ref=e132]:
+                - img [ref=e133]
+                - generic [ref=e135]: Parité salariale
+              - generic [ref=e137]: "41"
+            - listitem [ref=e138] [cursor=pointer]:
+              - generic [ref=e139]:
+                - img [ref=e140]
+                - generic [ref=e142]: Entreprise émergente
+              - generic [ref=e144]: "53"
+            - listitem [ref=e145] [cursor=pointer]:
+              - generic [ref=e146]:
+                - img [ref=e147]
+                - generic [ref=e149]: Entreprise établie
+              - generic [ref=e151]: "300"
+          - button "Next slide" [ref=e152] [cursor=pointer]:
+            - img [ref=e153]
+        - button "Tous les filtres" [ref=e157] [cursor=pointer]:
+          - img [ref=e158]
+          - generic [ref=e160]: Tous les filtres
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e165]:
+            - generic [ref=e166]:
+              - paragraph [ref=e167]: Jobs
+              - generic [ref=e168]: "525"
+            - generic [ref=e169]:
+              - checkbox "Rechercher uniquement dans le titre de l’offre" [ref=e171] [cursor=pointer]
+              - generic [ref=e172]: Rechercher uniquement dans le titre de l’offre
+          - generic [ref=e173]:
+            - combobox [ref=e174]:
+              - generic [ref=e175]:
+                - generic [ref=e177] [cursor=pointer]: Trier par pertinence
+                - button "open menu" [ref=e179] [cursor=pointer]:
+                  - img [ref=e180]
+            - generic [ref=e182]:
+              - button "toggle grid view" [ref=e183] [cursor=pointer]:
+                - img [ref=e184]
+              - button "toggle list view" [ref=e186] [cursor=pointer]:
+                - img [ref=e187]
+        - generic [ref=e190]:
+          - list [ref=e191]:
+            - listitem [ref=e192]:
+              - generic [ref=e194] [cursor=pointer]:
+                - link "Consultez l'offre Sr AI Engineer" [ref=e195]:
+                  - /url: /fr/companies/descartes-mauss/jobs/sr-ai-engineer_paris
+                  - img "Descartes & Mauss" [ref=e196]
+                  - generic [ref=e198]:
+                    - img [ref=e199]
+                    - generic [ref=e201]: Recrute activement !
+                - generic [ref=e202]:
+                  - link "Sr AI Engineer" [ref=e203]:
+                    - /url: /fr/companies/descartes-mauss/jobs/sr-ai-engineer_paris
+                    - heading "Sr AI Engineer" [level=2] [ref=e204]:
+                      - mark [ref=e205]: Sr AI Engineer
+                  - generic [ref=e206]:
+                    - img "Descartes & Mauss" [ref=e208]
+                    - generic [ref=e209]: Descartes & Mauss
+                  - paragraph [ref=e210]: AI-powered SaaS platform for automating decision-making processes.
+                  - generic [ref=e211]:
+                    - generic [ref=e212]:
+                      - img [ref=e213]
+                      - text: CDI
+                    - generic [ref=e215]:
+                      - img [ref=e216]
+                      - generic [ref=e218]: Paris
+                    - generic [ref=e219]:
+                      - img [ref=e220]
+                      - generic [ref=e222]: Télétravail fréquent
+                      - img [ref=e224]
+                    - generic [ref=e226]:
+                      - img [ref=e227]
+                      - generic [ref=e229]: Intelligence artificielle / Machine Learning, Digital Marketing / Data Marketing
+                    - generic [ref=e230]:
+                      - img [ref=e231]
+                      - generic [ref=e233]: 35 collaborateurs
+                  - generic [ref=e234]:
+                    - button "Sponsorisé" [ref=e235]:
+                      - img [ref=e236]
+                      - generic [ref=e238]: Sponsorisé
+                    - generic [ref=e239]:
+                      - button "Hide" [ref=e240]:
+                        - img [ref=e241]
+                      - button "Sauvegarder" [ref=e243]:
+                        - generic [ref=e244]:
+                          - img [ref=e245]
+                          - img [ref=e247]
+            - listitem [ref=e257]:
+              - generic [ref=e259] [cursor=pointer]:
+                - link "Consultez l'offre Applied AI, Forward Deployed Machine Learning Engineer, Critical and Sovereign Institutions, EMEA" [ref=e260]:
+                  - /url: /fr/companies/mistral-ai/jobs/applied-ai-forward-deployed-machine-learning-engineer-critical-and-sovereign-institutions-emea_paris
+                  - img "Mistral Ai" [ref=e261]
+                - generic [ref=e262]:
+                  - link "Applied AI, Forward Deployed Machine Learning Engineer, Critical and Sovereign Institutions, EMEA" [ref=e263]:
+                    - /url: /fr/companies/mistral-ai/jobs/applied-ai-forward-deployed-machine-learning-engineer-critical-and-sovereign-institutions-emea_paris
+                    - heading "Applied AI, Forward Deployed Machine Learning Engineer, Critical and Sovereign Institutions, EMEA" [level=2] [ref=e264]:
+                      - mark [ref=e265]:
+                        - text: Applied AI, Forward Deployed
+                        - emphasis [ref=e266]: Machine
+                        - emphasis [ref=e267]: Learning
+                        - text: Engineer, Critical and Sovereign Institutions, EMEA
+                  - generic [ref=e268]:
+                    - img "Mistral Ai" [ref=e270]
+                    - generic [ref=e271]: Mistral Ai
+                  - paragraph [ref=e272]: Modèles d'IA ouverts et accessibles pour l'innovation générative.
+                  - generic [ref=e273]:
+                    - generic [ref=e274]:
+                      - img [ref=e275]
+                      - text: CDI
+                    - generic [ref=e277]:
+                      - img [ref=e278]
+                      - generic [ref=e280]: Paris
+                    - generic [ref=e281]:
+                      - img [ref=e282]
+                      - generic [ref=e284]: Télétravail non autorisé
+                      - img [ref=e286]
+                    - generic [ref=e288]:
+                      - img [ref=e289]
+                      - generic [ref=e291]: Intelligence artificielle / Machine Learning, IT / Digital
+                    - generic [ref=e292]:
+                      - img [ref=e293]
+                      - generic [ref=e295]: 280 collaborateurs
+                  - generic [ref=e296]:
+                    - generic [ref=e297]:
+                      - img [ref=e298]
+                      - paragraph [ref=e300]:
+                        - time [ref=e301]: hier
+                    - button "Sauvegarder" [ref=e303]:
+                      - generic [ref=e304]:
+                        - img [ref=e305]
+                        - img [ref=e307]
+            - listitem [ref=e317]:
+              - generic [ref=e319] [cursor=pointer]:
+                - link "Consultez l'offre Open-Source Software, Machine Learning Engineer" [ref=e320]:
+                  - /url: /fr/companies/mistral-ai/jobs/machine-learning-engineer-open-source-software-paris-london_paris
+                  - img "Mistral Ai" [ref=e321]
+                - generic [ref=e322]:
+                  - link "Open-Source Software, Machine Learning Engineer" [ref=e323]:
+                    - /url: /fr/companies/mistral-ai/jobs/machine-learning-engineer-open-source-software-paris-london_paris
+                    - heading "Open-Source Software, Machine Learning Engineer" [level=2] [ref=e324]:
+                      - mark [ref=e325]:
+                        - text: Open-Source Software,
+                        - emphasis [ref=e326]: Machine
+                        - emphasis [ref=e327]: Learning
+                        - text: Engineer
+                  - generic [ref=e328]:
+                    - img "Mistral Ai" [ref=e330]
+                    - generic [ref=e331]: Mistral Ai
+                  - paragraph [ref=e332]: Modèles d'IA ouverts et accessibles pour l'innovation générative.
+                  - generic [ref=e333]:
+                    - generic [ref=e334]:
+                      - img [ref=e335]
+                      - text: CDI
+                    - generic [ref=e337]:
+                      - img [ref=e338]
+                      - generic [ref=e340]: Paris
+                    - generic [ref=e341]:
+                      - img [ref=e342]
+                      - generic [ref=e344]: Télétravail fréquent
+                      - img [ref=e346]
+                    - generic [ref=e348]:
+                      - img [ref=e349]
+                      - generic [ref=e351]: Intelligence artificielle / Machine Learning, IT / Digital
+                    - generic [ref=e352]:
+                      - img [ref=e353]
+                      - generic [ref=e355]: 280 collaborateurs
+                  - generic [ref=e356]:
+                    - generic [ref=e357]:
+                      - img [ref=e358]
+                      - paragraph [ref=e360]:
+                        - time [ref=e361]: avant-hier
+                    - button "Sauvegarder" [ref=e363]:
+                      - generic [ref=e364]:
+                        - img [ref=e365]
+                        - img [ref=e367]
+            - listitem [ref=e377]:
+              - generic [ref=e379] [cursor=pointer]:
+                - link "Consultez l'offre Machine Learning Engineer (H/F) | Stage" [ref=e380]:
+                  - /url: /fr/companies/datascientest/jobs/machine-learning-engineer-formateur-h-f-stage_puteaux
+                  - img "Liora" [ref=e381]
+                - generic [ref=e382]:
+                  - link "Machine Learning Engineer (H/F) | Stage" [ref=e383]:
+                    - /url: /fr/companies/datascientest/jobs/machine-learning-engineer-formateur-h-f-stage_puteaux
+                    - heading "Machine Learning Engineer (H/F) | Stage" [level=2] [ref=e384]:
+                      - mark [ref=e385]:
+                        - emphasis [ref=e386]: Machine
+                        - emphasis [ref=e387]: Learning
+                        - text: Engineer (H/F) | Stage
+                  - generic [ref=e388]:
+                    - img "Liora" [ref=e390]
+                    - generic [ref=e391]: Liora
+                  - paragraph [ref=e392]: École de formation tech à distance pour compétences clés.
+                  - generic [ref=e393]:
+                    - generic [ref=e394]:
+                      - img [ref=e395]
+                      - text: Stage
+                    - generic [ref=e397]:
+                      - img [ref=e398]
+                      - generic [ref=e400]: Courbevoie
+                    - generic [ref=e401]:
+                      - img [ref=e402]
+                      - generic [ref=e404]: Télétravail occasionnel
+                      - img [ref=e406]
+                    - generic [ref=e408]:
+                      - img [ref=e409]
+                      - generic [ref=e411]: SaaS / Cloud Services, EdTech
+                    - generic [ref=e412]:
+                      - img [ref=e413]
+                      - generic [ref=e415]: 130 collaborateurs
+                  - generic [ref=e416]:
+                    - generic [ref=e417]:
+                      - img [ref=e418]
+                      - paragraph [ref=e420]:
+                        - time [ref=e421]: il y a 3 jours
+                    - button "Sauvegarder" [ref=e423]:
+                      - generic [ref=e424]:
+                        - img [ref=e425]
+                        - img [ref=e427]
+            - listitem [ref=e437]:
+              - generic [ref=e439] [cursor=pointer]:
+                - 'link "Consultez l''offre STAGE : Validation puis optimisation d''un outil de Deep Learning pour le contrôle non destructif F/H" [ref=e440]':
+                  - /url: /fr/companies/safran/jobs/stage-validation-puis-optimisation-d-un-outil-de-deep-learning-pour-le-controle-non-destructif-f-h_chateaufort
+                  - img "Safran" [ref=e441]
+                - generic [ref=e442]:
+                  - 'link "STAGE : Validation puis optimisation d''un outil de Deep Learning pour le contrôle non destructif F/H" [ref=e443]':
+                    - /url: /fr/companies/safran/jobs/stage-validation-puis-optimisation-d-un-outil-de-deep-learning-pour-le-controle-non-destructif-f-h_chateaufort
+                    - 'heading "STAGE : Validation puis optimisation d''un outil de Deep Learning pour le contrôle non destructif F/H" [level=2] [ref=e444]':
+                      - mark [ref=e445]:
+                        - text: "STAGE : Validation puis optimisation d'un outil de Deep"
+                        - emphasis [ref=e446]: Learning
+                        - text: pour le contrôle non destructif F/H
+                  - generic [ref=e447]:
+                    - img "Safran" [ref=e449]
+                    - generic [ref=e450]: Safran
+                  - paragraph [ref=e451]: Groupe high-tech pour aéronautique, espace et défense.
+                  - generic [ref=e452]:
+                    - generic [ref=e453]:
+                      - img [ref=e454]
+                      - text: Stage
+                    - generic [ref=e456]:
+                      - img [ref=e457]
+                      - generic [ref=e459]: Châteaufort
+                    - generic [ref=e460]:
+                      - img [ref=e461]
+                      - generic [ref=e463]: Télétravail non autorisé
+                      - img [ref=e465]
+                    - generic [ref=e467]:
+                      - img [ref=e468]
+                      - generic [ref=e470]: Aéronautique / Spatiale
+                    - generic [ref=e471]:
+                      - img [ref=e472]
+                      - generic [ref=e474]: 92 000 collaborateurs
+                  - generic [ref=e475]:
+                    - generic [ref=e476]:
+                      - img [ref=e477]
+                      - paragraph [ref=e479]:
+                        - time [ref=e480]: il y a 4 jours
+                    - button "Sauvegarder" [ref=e482]:
+                      - generic [ref=e483]:
+                        - img [ref=e484]
+                        - img [ref=e486]
+            - listitem [ref=e496]:
+              - generic [ref=e498] [cursor=pointer]:
+                - link "Consultez l'offre Senior Deep Learning Scientist (H/F)" [ref=e499]:
+                  - /url: /fr/companies/safran-ai/jobs/senior-deep-learning-scientist-h-f_paris_SE_GJYl8Vq
+                  - img "Safran.AI (ex-Preligens)" [ref=e500]
+                - generic [ref=e501]:
+                  - link "Senior Deep Learning Scientist (H/F)" [ref=e502]:
+                    - /url: /fr/companies/safran-ai/jobs/senior-deep-learning-scientist-h-f_paris_SE_GJYl8Vq
+                    - heading "Senior Deep Learning Scientist (H/F)" [level=2] [ref=e503]:
+                      - mark [ref=e504]:
+                        - text: Senior Deep
+                        - emphasis [ref=e505]: Learning
+                        - text: Scientist (H/F)
+                  - generic [ref=e506]:
+                    - img "Safran.AI (ex-Preligens)" [ref=e508]
+                    - generic [ref=e509]: Safran.AI (ex-Preligens)
+                  - paragraph [ref=e510]: Solutions d'IA pour l'analyse d'images satellite et de signaux acoustiques.
+                  - generic [ref=e511]:
+                    - generic [ref=e512]:
+                      - img [ref=e513]
+                      - text: CDI
+                    - generic [ref=e515]:
+                      - img [ref=e516]
+                      - generic [ref=e518]: Paris
+                    - generic [ref=e519]:
+                      - img [ref=e520]
+                      - generic [ref=e522]: Télétravail fréquent
+                      - img [ref=e524]
+                    - generic [ref=e526]:
+                      - img [ref=e527]
+                      - generic [ref=e529]: Intelligence artificielle / Machine Learning, Big Data
+                    - generic [ref=e530]:
+                      - img [ref=e531]
+                      - generic [ref=e533]: 241 collaborateurs
+                  - generic [ref=e534]:
+                    - generic [ref=e535]:
+                      - img [ref=e536]
+                      - paragraph [ref=e538]:
+                        - time [ref=e539]: il y a 4 jours
+                    - button "Sauvegarder" [ref=e541]:
+                      - generic [ref=e542]:
+                        - img [ref=e543]
+                        - img [ref=e545]
+            - listitem [ref=e555]:
+              - generic [ref=e557] [cursor=pointer]:
+                - link "Consultez l'offre DATA SCIENTIST EXPERT EN IA-MACHINE LEARNING (F/H)" [ref=e558]:
+                  - /url: /fr/companies/ministere-de-l-europe-et-des-affaires-etranger/jobs/data-scientist-expert-en-ia-machine-learning-f-h_paris
+                  - img "Ministère de l'Europe et des Affaires étrangères" [ref=e559]
+                - generic [ref=e560]:
+                  - link "DATA SCIENTIST EXPERT EN IA-MACHINE LEARNING (F/H)" [ref=e561]:
+                    - /url: /fr/companies/ministere-de-l-europe-et-des-affaires-etranger/jobs/data-scientist-expert-en-ia-machine-learning-f-h_paris
+                    - heading "DATA SCIENTIST EXPERT EN IA-MACHINE LEARNING (F/H)" [level=2] [ref=e562]:
+                      - mark [ref=e563]:
+                        - text: DATA SCIENTIST EXPERT EN IA-
+                        - emphasis [ref=e564]: MACHINE
+                        - emphasis [ref=e565]: LEARNING
+                        - text: (F/H)
+                  - generic [ref=e566]:
+                    - img "Ministère de l'Europe et des Affaires étrangères" [ref=e568]
+                    - generic [ref=e569]: Ministère de l'Europe et des Affaires étrangères
+                  - paragraph [ref=e570]: Politique étrangère de la France et services numériques pour le ministère.
+                  - generic [ref=e571]:
+                    - generic [ref=e572]:
+                      - img [ref=e573]
+                      - text: CDD / Temporaire
+                    - generic [ref=e575]:
+                      - img [ref=e576]
+                      - generic [ref=e578]: Paris
+                    - generic [ref=e579]:
+                      - img [ref=e580]
+                      - generic [ref=e582]: Télétravail occasionnel
+                      - img [ref=e584]
+                    - generic [ref=e586]:
+                      - img [ref=e587]
+                      - generic [ref=e589]: "Salaire :"
+                      - text: 36,1K à 77K €
+                    - generic [ref=e590]:
+                      - img [ref=e591]
+                      - generic [ref=e593]: Cybersécurité, Administration publique
+                    - generic [ref=e594]:
+                      - img [ref=e595]
+                      - generic [ref=e597]: 13 600 collaborateurs
+                  - generic [ref=e598]:
+                    - generic [ref=e599]:
+                      - img [ref=e600]
+                      - paragraph [ref=e602]:
+                        - time [ref=e603]: il y a 8 jours
+                    - button "Sauvegarder" [ref=e605]:
+                      - generic [ref=e606]:
+                        - img [ref=e607]
+                        - img [ref=e609]
+            - listitem [ref=e619]:
+              - generic [ref=e621] [cursor=pointer]:
+                - link "Consultez l'offre Senior Machine Learning Engineer - Access" [ref=e622]:
+                  - /url: /fr/companies/doctrine/jobs/senior-machine-learning-engineer-access_paris
+                  - img "Doctrine" [ref=e623]
+                - generic [ref=e624]:
+                  - link "Senior Machine Learning Engineer - Access" [ref=e625]:
+                    - /url: /fr/companies/doctrine/jobs/senior-machine-learning-engineer-access_paris
+                    - heading "Senior Machine Learning Engineer - Access" [level=2] [ref=e626]:
+                      - mark [ref=e627]:
+                        - text: Senior
+                        - emphasis [ref=e628]: Machine
+                        - emphasis [ref=e629]: Learning
+                        - text: Engineer - Access
+                  - generic [ref=e630]:
+                    - img "Doctrine" [ref=e632]
+                    - generic [ref=e633]: Doctrine
+                  - paragraph [ref=e634]: IA juridique pour juristes et avocats en Europe.
+                  - generic [ref=e635]:
+                    - generic [ref=e636]:
+                      - img [ref=e637]
+                      - text: CDI
+                    - generic [ref=e639]:
+                      - img [ref=e640]
+                      - generic [ref=e642]: Paris
+                    - generic [ref=e643]:
+                      - img [ref=e644]
+                      - generic [ref=e646]: Télétravail fréquent
+                      - img [ref=e648]
+                    - generic [ref=e650]:
+                      - img [ref=e651]
+                      - generic [ref=e653]: Logiciels, Intelligence artificielle / Machine Learning
+                    - generic [ref=e654]:
+                      - img [ref=e655]
+                      - generic [ref=e657]: 250 collaborateurs
+                  - generic [ref=e658]:
+                    - generic [ref=e659]:
+                      - img [ref=e660]
+                      - paragraph [ref=e662]:
+                        - time [ref=e663]: il y a 7 jours
+                    - button "Sauvegarder" [ref=e665]:
+                      - generic [ref=e666]:
+                        - img [ref=e667]
+                        - img [ref=e669]
+            - listitem [ref=e679]:
+              - generic [ref=e681] [cursor=pointer]:
+                - link "Consultez l'offre Senior Machine Learning Engineer" [ref=e682]:
+                  - /url: /fr/companies/aive/jobs/machine-learning-engineer_levallois-perret
+                  - img "Aive" [ref=e683]
+                  - generic [ref=e686]: Déjà vu
+                - generic [ref=e687]:
+                  - link "Senior Machine Learning Engineer" [ref=e688]:
+                    - /url: /fr/companies/aive/jobs/machine-learning-engineer_levallois-perret
+                    - heading "Senior Machine Learning Engineer" [level=2] [ref=e689]:
+                      - mark [ref=e690]:
+                        - text: Senior
+                        - emphasis [ref=e691]: Machine
+                        - emphasis [ref=e692]: Learning
+                        - text: Engineer
+                  - generic [ref=e693]:
+                    - img "Aive" [ref=e695]
+                    - generic [ref=e696]: Aive
+                  - paragraph [ref=e697]: Moteur d'IA pour la création et distribution vidéo automatisée.
+                  - generic [ref=e698]:
+                    - generic [ref=e699]:
+                      - img [ref=e700]
+                      - text: CDI
+                    - generic [ref=e702]:
+                      - img [ref=e703]
+                      - generic [ref=e705]: Paris
+                    - generic [ref=e706]:
+                      - img [ref=e707]
+                      - generic [ref=e709]: Télétravail fréquent
+                      - img [ref=e711]
+                    - generic [ref=e713]:
+                      - img [ref=e714]
+                      - generic [ref=e716]: "Salaire :"
+                      - text: 55K à 85K €
+                    - generic [ref=e717]:
+                      - img [ref=e718]
+                      - generic [ref=e720]: Intelligence artificielle / Machine Learning, SaaS / Cloud Services
+                    - generic [ref=e721]:
+                      - img [ref=e722]
+                      - generic [ref=e724]: 33 collaborateurs
+                  - generic [ref=e725]:
+                    - generic [ref=e726]:
+                      - img [ref=e727]
+                      - paragraph [ref=e729]:
+                        - time [ref=e730]: il y a 11 jours
+                    - button "Sauvegarder" [ref=e732]:
+                      - generic [ref=e733]:
+                        - img [ref=e734]
+                        - img [ref=e736]
+            - listitem [ref=e746]:
+              - generic [ref=e748] [cursor=pointer]:
+                - link "Consultez l'offre Research Engineer, Machine Learning - Paris/London/Zurich/Warsaw" [ref=e749]:
+                  - /url: /fr/companies/mistral-ai/jobs/research-engineer-paris-london_paris
+                  - img "Mistral Ai" [ref=e750]
+                - generic [ref=e751]:
+                  - link "Research Engineer, Machine Learning - Paris/London/Zurich/Warsaw" [ref=e752]:
+                    - /url: /fr/companies/mistral-ai/jobs/research-engineer-paris-london_paris
+                    - heading "Research Engineer, Machine Learning - Paris/London/Zurich/Warsaw" [level=2] [ref=e753]:
+                      - mark [ref=e754]:
+                        - text: Research Engineer,
+                        - emphasis [ref=e755]: Machine
+                        - emphasis [ref=e756]: Learning
+                        - text: "- Paris/London/Zurich/Warsaw"
+                  - generic [ref=e757]:
+                    - img "Mistral Ai" [ref=e759]
+                    - generic [ref=e760]: Mistral Ai
+                  - paragraph [ref=e761]: Modèles d'IA ouverts et accessibles pour l'innovation générative.
+                  - generic [ref=e762]:
+                    - generic [ref=e763]:
+                      - img [ref=e764]
+                      - text: CDI
+                    - generic [ref=e766]:
+                      - img [ref=e767]
+                      - generic [ref=e769]: Paris
+                    - generic [ref=e770]:
+                      - img [ref=e771]
+                      - generic [ref=e773]: Télétravail fréquent
+                      - img [ref=e775]
+                    - generic [ref=e777]:
+                      - img [ref=e778]
+                      - generic [ref=e780]: Intelligence artificielle / Machine Learning, IT / Digital
+                    - generic [ref=e781]:
+                      - img [ref=e782]
+                      - generic [ref=e784]: 280 collaborateurs
+                  - generic [ref=e785]:
+                    - generic [ref=e786]:
+                      - img [ref=e787]
+                      - paragraph [ref=e789]:
+                        - time [ref=e790]: il y a 9 jours
+                    - button "Sauvegarder" [ref=e792]:
+                      - generic [ref=e793]:
+                        - img [ref=e794]
+                        - img [ref=e796]
+            - listitem [ref=e806]:
+              - generic [ref=e807]:
+                - button "Close" [ref=e808] [cursor=pointer]:
+                  - img [ref=e809]
+                - img [ref=e812]
+                - generic [ref=e813]:
+                  - generic [ref=e814]:
+                    - paragraph [ref=e815]: Ne soyez plus seulement la personne qui cherche
+                    - paragraph [ref=e816]: Soyez aussi celle que l’on trouve. Indiquez votre disponibilité et complétez votre profil pour que les entreprises qui recrutent vous contactent directement.
+                  - button "Recevoir des opportunités" [ref=e817] [cursor=pointer]:
+                    - img [ref=e818]
+                    - generic [ref=e820]: Recevoir des opportunités
+            - listitem [ref=e821]:
+              - generic [ref=e823] [cursor=pointer]:
+                - link "Consultez l'offre Applied AI, Forward Deployed Machine Learning Engineer - EMEA" [ref=e824]:
+                  - /url: /fr/companies/mistral-ai/jobs/applied-ai-engineer-use-case-emea-singapore_paris
+                  - img "Mistral Ai" [ref=e825]
+                - generic [ref=e826]:
+                  - link "Applied AI, Forward Deployed Machine Learning Engineer - EMEA" [ref=e827]:
+                    - /url: /fr/companies/mistral-ai/jobs/applied-ai-engineer-use-case-emea-singapore_paris
+                    - heading "Applied AI, Forward Deployed Machine Learning Engineer - EMEA" [level=2] [ref=e828]:
+                      - mark [ref=e829]:
+                        - text: Applied AI, Forward Deployed
+                        - emphasis [ref=e830]: Machine
+                        - emphasis [ref=e831]: Learning
+                        - text: Engineer - EMEA
+                  - generic [ref=e832]:
+                    - img "Mistral Ai" [ref=e834]
+                    - generic [ref=e835]: Mistral Ai
+                  - paragraph [ref=e836]: Modèles d'IA ouverts et accessibles pour l'innovation générative.
+                  - generic [ref=e837]:
+                    - generic [ref=e838]:
+                      - img [ref=e839]
+                      - text: CDI
+                    - generic [ref=e841]:
+                      - img [ref=e842]
+                      - generic [ref=e844]: Paris
+                    - generic [ref=e845]:
+                      - img [ref=e846]
+                      - generic [ref=e848]: Télétravail non autorisé
+                      - img [ref=e850]
+                    - generic [ref=e852]:
+                      - img [ref=e853]
+                      - generic [ref=e855]: Intelligence artificielle / Machine Learning, IT / Digital
+                    - generic [ref=e856]:
+                      - img [ref=e857]
+                      - generic [ref=e859]: 280 collaborateurs
+                  - generic [ref=e860]:
+                    - generic [ref=e861]:
+                      - img [ref=e862]
+                      - paragraph [ref=e864]:
+                        - time [ref=e865]: il y a 9 jours
+                    - button "Sauvegarder" [ref=e867]:
+                      - generic [ref=e868]:
+                        - img [ref=e869]
+                        - img [ref=e871]
+            - listitem [ref=e881]:
+              - generic [ref=e883] [cursor=pointer]:
+                - link "Consultez l'offre Data Scientist / Machine Learning Engineer Confirmé F/H" [ref=e884]:
+                  - /url: /fr/companies/oney/jobs/data-scientist-machine-learning-engineer-confirme-f-h_croix
+                  - img "Oney" [ref=e885]
+                - generic [ref=e886]:
+                  - link "Data Scientist / Machine Learning Engineer Confirmé F/H" [ref=e887]:
+                    - /url: /fr/companies/oney/jobs/data-scientist-machine-learning-engineer-confirme-f-h_croix
+                    - heading "Data Scientist / Machine Learning Engineer Confirmé F/H" [level=2] [ref=e888]:
+                      - mark [ref=e889]:
+                        - text: Data Scientist /
+                        - emphasis [ref=e890]: Machine
+                        - emphasis [ref=e891]: Learning
+                        - text: Engineer Confirmé F/H
+                  - generic [ref=e892]:
+                    - img "Oney" [ref=e894]
+                    - generic [ref=e895]: Oney
+                  - paragraph [ref=e896]: Solutions de paiement et financement pour la consommation.
+                  - generic [ref=e897]:
+                    - generic [ref=e898]:
+                      - img [ref=e899]
+                      - text: CDI
+                    - generic [ref=e901]:
+                      - img [ref=e902]
+                      - generic [ref=e904]: Croix
+                    - generic [ref=e905]:
+                      - img [ref=e906]
+                      - generic [ref=e908]: Télétravail non autorisé
+                      - img [ref=e910]
+                    - generic [ref=e912]:
+                      - img [ref=e913]
+                      - generic [ref=e915]: Banque, FinTech / InsurTech
+                    - generic [ref=e916]:
+                      - img [ref=e917]
+                      - generic [ref=e919]: 1 966 collaborateurs
+                  - generic [ref=e920]:
+                    - generic [ref=e921]:
+                      - img [ref=e922]
+                      - paragraph [ref=e924]:
+                        - time [ref=e925]: il y a 10 jours
+                    - button "Sauvegarder" [ref=e927]:
+                      - generic [ref=e928]:
+                        - img [ref=e929]
+                        - img [ref=e931]
+            - listitem [ref=e941]:
+              - generic [ref=e943] [cursor=pointer]:
+                - link "Consultez l'offre Ingénieur IA – Deep Learning 3D & Agentic AI F/H" [ref=e944]:
+                  - /url: /fr/companies/step-consulting/jobs/ingenieur-ia-deep-learning-3d-agentic-ai-f-h_grenoble
+                  - img "STEP Consulting" [ref=e945]
+                - generic [ref=e946]:
+                  - link "Ingénieur IA – Deep Learning 3D & Agentic AI F/H" [ref=e947]:
+                    - /url: /fr/companies/step-consulting/jobs/ingenieur-ia-deep-learning-3d-agentic-ai-f-h_grenoble
+                    - heading "Ingénieur IA – Deep Learning 3D & Agentic AI F/H" [level=2] [ref=e948]:
+                      - mark [ref=e949]:
+                        - text: Ingénieur IA – Deep
+                        - emphasis [ref=e950]: Learning
+                        - text: 3D & Agentic AI F/H
+                  - generic [ref=e951]:
+                    - img "STEP Consulting" [ref=e953]
+                    - generic [ref=e954]: STEP Consulting
+                  - paragraph [ref=e955]: Cabinet de conseil en stratégie et amélioration de la performance.
+                  - generic [ref=e956]:
+                    - generic [ref=e957]:
+                      - img [ref=e958]
+                      - text: CDI
+                    - generic [ref=e960]:
+                      - img [ref=e961]
+                      - generic [ref=e963]: Grenoble
+                    - generic [ref=e964]:
+                      - img [ref=e965]
+                      - generic [ref=e967]: Télétravail fréquent
+                      - img [ref=e969]
+                    - generic [ref=e971]:
+                      - img [ref=e972]
+                      - generic [ref=e974]: Organisation / Management, Stratégie
+                    - generic [ref=e975]:
+                      - img [ref=e976]
+                      - generic [ref=e978]: 70 collaborateurs
+                  - generic [ref=e979]:
+                    - generic [ref=e980]:
+                      - img [ref=e981]
+                      - paragraph [ref=e983]:
+                        - time [ref=e984]: il y a 12 jours
+                    - button "Sauvegarder" [ref=e986]:
+                      - generic [ref=e987]:
+                        - img [ref=e988]
+                        - img [ref=e990]
+            - listitem [ref=e1000]:
+              - generic [ref=e1002] [cursor=pointer]:
+                - link "Consultez l'offre INGÉNIEUR MACHINE LEARNING" [ref=e1003]:
+                  - /url: /fr/companies/ministere-des-armees-fr/jobs/ingenieur-machine-learning_malakoff_CDLDMDA_9bKlPPk
+                  - img "Civils de la Défense - Ministère des Armées" [ref=e1004]
+                - generic [ref=e1005]:
+                  - link "INGÉNIEUR MACHINE LEARNING" [ref=e1006]:
+                    - /url: /fr/companies/ministere-des-armees-fr/jobs/ingenieur-machine-learning_malakoff_CDLDMDA_9bKlPPk
+                    - heading "INGÉNIEUR MACHINE LEARNING" [level=2] [ref=e1007]:
+                      - mark [ref=e1008]:
+                        - text: INGÉNIEUR
+                        - emphasis [ref=e1009]: MACHINE
+                        - emphasis [ref=e1010]: LEARNING
+                  - generic [ref=e1011]:
+                    - img "Civils de la Défense - Ministère des Armées" [ref=e1013]
+                    - generic [ref=e1014]: Civils de la Défense - Ministère des Armées
+                  - paragraph [ref=e1015]: Protection des citoyens et intérêts français via divers métiers.
+                  - generic [ref=e1016]:
+                    - generic [ref=e1017]:
+                      - img [ref=e1018]
+                      - text: CDI
+                    - generic [ref=e1020]:
+                      - img [ref=e1021]
+                      - generic [ref=e1023]: Malakoff
+                    - generic [ref=e1024]:
+                      - img [ref=e1025]
+                      - generic [ref=e1027]: Télétravail non autorisé
+                      - img [ref=e1029]
+                    - generic [ref=e1031]:
+                      - img [ref=e1032]
+                      - generic [ref=e1034]: IT / Digital, Cybersécurité
+                    - generic [ref=e1035]:
+                      - img [ref=e1036]
+                      - generic [ref=e1038]: 64 000 collaborateurs
+                  - generic [ref=e1039]:
+                    - generic [ref=e1040]:
+                      - img [ref=e1041]
+                      - paragraph [ref=e1043]:
+                        - time [ref=e1044]: il y a 13 jours
+                    - button "Sauvegarder" [ref=e1046]:
+                      - generic [ref=e1047]:
+                        - img [ref=e1048]
+                        - img [ref=e1050]
+            - listitem [ref=e1060]:
+              - generic [ref=e1062] [cursor=pointer]:
+                - link "Consultez l'offre Machine Learning Engineer - AI Teams (x/f/m)" [ref=e1063]:
+                  - /url: /fr/companies/doctolib/jobs/senior-machine-learning-engineer-information-retrieval-ai-teams-x-f-m_paris_DOCTO_2ZqP1R7
+                  - img "Doctolib" [ref=e1064]
+                - generic [ref=e1065]:
+                  - link "Machine Learning Engineer - AI Teams (x/f/m)" [ref=e1066]:
+                    - /url: /fr/companies/doctolib/jobs/senior-machine-learning-engineer-information-retrieval-ai-teams-x-f-m_paris_DOCTO_2ZqP1R7
+                    - heading "Machine Learning Engineer - AI Teams (x/f/m)" [level=2] [ref=e1067]:
+                      - mark [ref=e1068]:
+                        - emphasis [ref=e1069]: Machine
+                        - emphasis [ref=e1070]: Learning
+                        - text: Engineer - AI Teams (x/f/m)
+                  - generic [ref=e1071]:
+                    - img "Doctolib" [ref=e1073]
+                    - generic [ref=e1074]: Doctolib
+                  - paragraph [ref=e1075]: Plateforme de santé pour praticiens et patients en Europe.
+                  - generic [ref=e1076]:
+                    - generic [ref=e1077]:
+                      - img [ref=e1078]
+                      - text: CDI
+                    - generic [ref=e1080]:
+                      - img [ref=e1081]
+                      - generic [ref=e1083]: Paris
+                    - generic [ref=e1084]:
+                      - img [ref=e1085]
+                      - generic [ref=e1087]: Télétravail fréquent
+                      - img [ref=e1089]
+                    - generic [ref=e1091]:
+                      - img [ref=e1092]
+                      - generic [ref=e1094]: Application mobile, Logiciels
+                    - generic [ref=e1095]:
+                      - img [ref=e1096]
+                      - generic [ref=e1098]: 3 000 collaborateurs
+                  - generic [ref=e1099]:
+                    - generic [ref=e1100]:
+                      - img [ref=e1101]
+                      - paragraph [ref=e1103]:
+                        - time [ref=e1104]: il y a 15 jours
+                    - button "Sauvegarder" [ref=e1106]:
+                      - generic [ref=e1107]:
+                        - img [ref=e1108]
+                        - img [ref=e1110]
+            - listitem [ref=e1120]:
+              - generic [ref=e1122] [cursor=pointer]:
+                - link "Consultez l'offre Assistant Projets IA & Machine Learning H/F" [ref=e1123]:
+                  - /url: /fr/companies/credit-agricole-cib/jobs/assistant-projets-ia-machine-learning-h-f_montrouge_CAC_JWA0aRb
+                  - img "Crédit Agricole CIB" [ref=e1124]
+                - generic [ref=e1125]:
+                  - link "Assistant Projets IA & Machine Learning H/F" [ref=e1126]:
+                    - /url: /fr/companies/credit-agricole-cib/jobs/assistant-projets-ia-machine-learning-h-f_montrouge_CAC_JWA0aRb
+                    - heading "Assistant Projets IA & Machine Learning H/F" [level=2] [ref=e1127]:
+                      - mark [ref=e1128]:
+                        - text: Assistant Projets IA &
+                        - emphasis [ref=e1129]: Machine
+                        - emphasis [ref=e1130]: Learning
+                        - text: H/F
+                  - generic [ref=e1131]:
+                    - img "Crédit Agricole CIB" [ref=e1133]
+                    - generic [ref=e1134]: Crédit Agricole CIB
+                  - paragraph [ref=e1135]: Banque de financement et d'investissement pour grandes entreprises et institutions.
+                  - generic [ref=e1136]:
+                    - generic [ref=e1137]:
+                      - img [ref=e1138]
+                      - text: Stage
+                    - generic [ref=e1140]:
+                      - img [ref=e1141]
+                      - generic [ref=e1143]: Montrouge
+                    - generic [ref=e1144]:
+                      - img [ref=e1145]
+                      - generic [ref=e1147]: Banque, Finance
+                    - generic [ref=e1148]:
+                      - img [ref=e1149]
+                      - generic [ref=e1151]: 10 400 collaborateurs
+                  - generic [ref=e1152]:
+                    - generic [ref=e1153]:
+                      - img [ref=e1154]
+                      - paragraph [ref=e1156]:
+                        - time [ref=e1157]: il y a 16 jours
+                    - button "Sauvegarder" [ref=e1159]:
+                      - generic [ref=e1160]:
+                        - img [ref=e1161]
+                        - img [ref=e1163]
+            - listitem [ref=e1173]:
+              - generic [ref=e1175] [cursor=pointer]:
+                - link "Consultez l'offre ALTERNANCE - Ingénieure / Ingénieur Machine Learning / CFD" [ref=e1176]:
+                  - /url: /fr/companies/arianegroup/jobs/alternance-ingenieure-ingenieur-machine-learning-cfd_vernon
+                  - img "ArianeGroup" [ref=e1177]
+                - generic [ref=e1178]:
+                  - link "ALTERNANCE - Ingénieure / Ingénieur Machine Learning / CFD" [ref=e1179]:
+                    - /url: /fr/companies/arianegroup/jobs/alternance-ingenieure-ingenieur-machine-learning-cfd_vernon
+                    - heading "ALTERNANCE - Ingénieure / Ingénieur Machine Learning / CFD" [level=2] [ref=e1180]:
+                      - mark [ref=e1181]:
+                        - text: ALTERNANCE - Ingénieure / Ingénieur
+                        - emphasis [ref=e1182]: Machine
+                        - emphasis [ref=e1183]: Learning
+                        - text: / CFD
+                  - generic [ref=e1184]:
+                    - img "ArianeGroup" [ref=e1186]
+                    - generic [ref=e1187]: ArianeGroup
+                  - paragraph [ref=e1188]: Accès à l'espace et défense pour l'Europe.
+                  - generic [ref=e1189]:
+                    - generic [ref=e1190]:
+                      - img [ref=e1191]
+                      - text: Alternance
+                    - generic [ref=e1193]:
+                      - img [ref=e1194]
+                      - generic [ref=e1196]: Vernon
+                    - generic [ref=e1197]:
+                      - img [ref=e1198]
+                      - generic [ref=e1200]: Ingénieries Spécialisées, Aéronautique / Spatiale
+                    - generic [ref=e1201]:
+                      - img [ref=e1202]
+                      - generic [ref=e1204]: 7 200 collaborateurs
+                  - generic [ref=e1205]:
+                    - generic [ref=e1206]:
+                      - img [ref=e1207]
+                      - paragraph [ref=e1209]:
+                        - time [ref=e1210]: il y a 18 jours
+                    - button "Sauvegarder" [ref=e1212]:
+                      - generic [ref=e1213]:
+                        - img [ref=e1214]
+                        - img [ref=e1216]
+            - listitem [ref=e1226]:
+              - generic [ref=e1228] [cursor=pointer]:
+                - link "Consultez l'offre Data Scientist | Machine Learning Engineer – Practice IA MARGO" [ref=e1229]:
+                  - /url: /fr/companies/margo/jobs/data-scientist-machine-learning-engineer-practice-ia-margo_paris
+                  - img "MARGO" [ref=e1230]
+                - generic [ref=e1231]:
+                  - link "Data Scientist | Machine Learning Engineer – Practice IA MARGO" [ref=e1232]:
+                    - /url: /fr/companies/margo/jobs/data-scientist-machine-learning-engineer-practice-ia-margo_paris
+                    - heading "Data Scientist | Machine Learning Engineer – Practice IA MARGO" [level=2] [ref=e1233]:
+                      - mark [ref=e1234]:
+                        - text: Data Scientist |
+                        - emphasis [ref=e1235]: Machine
+                        - emphasis [ref=e1236]: Learning
+                        - text: Engineer – Practice IA MARGO
+                  - generic [ref=e1237]:
+                    - img "MARGO" [ref=e1239]
+                    - generic [ref=e1240]: MARGO
+                  - paragraph [ref=e1241]: Projets IT complexes avec management et développement des talents.
+                  - generic [ref=e1242]:
+                    - generic [ref=e1243]:
+                      - img [ref=e1244]
+                      - text: CDI
+                    - generic [ref=e1246]:
+                      - img [ref=e1247]
+                      - generic [ref=e1249]: Paris
+                    - generic [ref=e1250]:
+                      - img [ref=e1251]
+                      - generic [ref=e1253]: Télétravail fréquent
+                      - img [ref=e1255]
+                    - generic [ref=e1257]:
+                      - img [ref=e1258]
+                      - generic [ref=e1260]: Logiciels, IT / Digital
+                    - generic [ref=e1261]:
+                      - img [ref=e1262]
+                      - generic [ref=e1264]: 400 collaborateurs
+                  - generic [ref=e1265]:
+                    - generic [ref=e1266]:
+                      - img [ref=e1267]
+                      - paragraph [ref=e1269]:
+                        - time [ref=e1270]: il y a 23 jours
+                    - button "Sauvegarder" [ref=e1272]:
+                      - generic [ref=e1273]:
+                        - img [ref=e1274]
+                        - img [ref=e1276]
+            - listitem [ref=e1286]:
+              - generic [ref=e1288] [cursor=pointer]:
+                - link "Consultez l'offre Machine Learning Engineer – Practice IA MARGO" [ref=e1289]:
+                  - /url: /fr/companies/margo/jobs/machine-learning-engineer-practice-ia-margo_paris
+                  - img "MARGO" [ref=e1290]
+                - generic [ref=e1291]:
+                  - link "Machine Learning Engineer – Practice IA MARGO" [ref=e1292]:
+                    - /url: /fr/companies/margo/jobs/machine-learning-engineer-practice-ia-margo_paris
+                    - heading "Machine Learning Engineer – Practice IA MARGO" [level=2] [ref=e1293]:
+                      - mark [ref=e1294]:
+                        - emphasis [ref=e1295]: Machine
+                        - emphasis [ref=e1296]: Learning
+                        - text: Engineer – Practice IA MARGO
+                  - generic [ref=e1297]:
+                    - img "MARGO" [ref=e1299]
+                    - generic [ref=e1300]: MARGO
+                  - paragraph [ref=e1301]: Projets IT complexes avec management et développement des talents.
+                  - generic [ref=e1302]:
+                    - generic [ref=e1303]:
+                      - img [ref=e1304]
+                      - text: CDI
+                    - generic [ref=e1306]:
+                      - img [ref=e1307]
+                      - generic [ref=e1309]: Paris
+                    - generic [ref=e1310]:
+                      - img [ref=e1311]
+                      - generic [ref=e1313]: Télétravail fréquent
+                      - img [ref=e1315]
+                    - generic [ref=e1317]:
+                      - img [ref=e1318]
+                      - generic [ref=e1320]: Logiciels, IT / Digital
+                    - generic [ref=e1321]:
+                      - img [ref=e1322]
+                      - generic [ref=e1324]: 400 collaborateurs
+                  - generic [ref=e1325]:
+                    - generic [ref=e1326]:
+                      - img [ref=e1327]
+                      - paragraph [ref=e1329]:
+                        - time [ref=e1330]: il y a 24 jours
+                    - button "Sauvegarder" [ref=e1332]:
+                      - generic [ref=e1333]:
+                        - img [ref=e1334]
+                        - img [ref=e1336]
+            - generic [ref=e1347]:
+              - button "Close" [ref=e1348] [cursor=pointer]:
+                - img [ref=e1349]
+              - generic [ref=e1351]:
+                - generic [ref=e1352]:
+                  - paragraph [ref=e1353]: Êtes-vous satisfaits de votre expérience de recherche ?
+                  - text: Vos feedbacks nous permettent d’améliorer l’expérience Welcome to the Jungle.
+                - link "Donner mon avis" [ref=e1355] [cursor=pointer]:
+                  - /url: https://wttj.typeform.com/to/gI4Rs8Up?utm_campaign=https%3A%2F%2Fwww.welcometothejungle.com%2Ffr%2Fjobs%3FrefinementList%255Boffices.country_code%255D%255B%255D%3DFR%26query%3Dmachine%2520learning%26page%3D1&utm_term=xxxxx&utm_content=xxxxx
+                  - generic [ref=e1356]: Donner mon avis
+            - listitem [ref=e1357]:
+              - generic [ref=e1359] [cursor=pointer]:
+                - link "Consultez l'offre Machine Learning Engineer - confirmé (H/F)" [ref=e1360]:
+                  - /url: /fr/companies/atos/jobs/machine-learning-engineer-confirme-h-f_lille
+                  - img "Atos" [ref=e1361]
+                  - generic [ref=e1364]: Déjà vu
+                - generic [ref=e1365]:
+                  - link "Machine Learning Engineer - confirmé (H/F)" [ref=e1366]:
+                    - /url: /fr/companies/atos/jobs/machine-learning-engineer-confirme-h-f_lille
+                    - heading "Machine Learning Engineer - confirmé (H/F)" [level=2] [ref=e1367]:
+                      - mark [ref=e1368]:
+                        - emphasis [ref=e1369]: Machine
+                        - emphasis [ref=e1370]: Learning
+                        - text: Engineer - confirmé (H/F)
+                  - generic [ref=e1371]:
+                    - img "Atos" [ref=e1373]
+                    - generic [ref=e1374]: Atos
+                  - paragraph [ref=e1375]: Services informatiques sécurisés et solutions IA pour divers secteurs.
+                  - generic [ref=e1376]:
+                    - generic [ref=e1377]:
+                      - img [ref=e1378]
+                      - text: CDI
+                    - generic [ref=e1380]:
+                      - img [ref=e1381]
+                      - generic [ref=e1383]: Lille
+                    - generic [ref=e1384]:
+                      - img [ref=e1385]
+                      - generic [ref=e1387]: Télétravail fréquent
+                      - img [ref=e1389]
+                    - generic [ref=e1391]:
+                      - img [ref=e1392]
+                      - generic [ref=e1394]: IT / Digital
+                    - generic [ref=e1395]:
+                      - img [ref=e1396]
+                      - generic [ref=e1398]: 63 000 collaborateurs
+                  - generic [ref=e1399]:
+                    - generic [ref=e1400]:
+                      - img [ref=e1401]
+                      - paragraph [ref=e1403]:
+                        - time [ref=e1404]: il y a 25 jours
+                    - button "Sauvegarder" [ref=e1406]:
+                      - generic [ref=e1407]:
+                        - img [ref=e1408]
+                        - img [ref=e1410]
+            - listitem [ref=e1420]:
+              - generic [ref=e1422] [cursor=pointer]:
+                - link "Consultez l'offre Machine Learning Engineer H/F" [ref=e1423]:
+                  - /url: /fr/companies/nexton-consulting/jobs/machine-learning-engineer-h-f_bordeaux_NEXTO_V0boJYJ
+                  - img "NEXTON" [ref=e1424]
+                - generic [ref=e1425]:
+                  - link "Machine Learning Engineer H/F" [ref=e1426]:
+                    - /url: /fr/companies/nexton-consulting/jobs/machine-learning-engineer-h-f_bordeaux_NEXTO_V0boJYJ
+                    - heading "Machine Learning Engineer H/F" [level=2] [ref=e1427]:
+                      - mark [ref=e1428]:
+                        - emphasis [ref=e1429]: Machine
+                        - emphasis [ref=e1430]: Learning
+                        - text: Engineer H/F
+                  - generic [ref=e1431]:
+                    - img "NEXTON" [ref=e1433]
+                    - generic [ref=e1434]: NEXTON
+                  - paragraph [ref=e1435]: Consulting et Factory pour l'innovation digitale des grands comptes.
+                  - generic [ref=e1436]:
+                    - generic [ref=e1437]:
+                      - img [ref=e1438]
+                      - text: CDI
+                    - generic [ref=e1440]:
+                      - img [ref=e1441]
+                      - generic [ref=e1443]: Bordeaux
+                    - generic [ref=e1444]:
+                      - img [ref=e1445]
+                      - generic [ref=e1447]: Télétravail fréquent
+                      - img [ref=e1449]
+                    - generic [ref=e1451]:
+                      - img [ref=e1452]
+                      - generic [ref=e1454]: Design, IT / Digital
+                    - generic [ref=e1455]:
+                      - img [ref=e1456]
+                      - generic [ref=e1458]: 450 collaborateurs
+                  - generic [ref=e1459]:
+                    - generic [ref=e1460]:
+                      - img [ref=e1461]
+                      - paragraph [ref=e1463]:
+                        - time [ref=e1464]: il y a 24 jours
+                    - button "Sauvegarder" [ref=e1466]:
+                      - generic [ref=e1467]:
+                        - img [ref=e1468]
+                        - img [ref=e1470]
+            - listitem [ref=e1480]:
+              - generic [ref=e1482] [cursor=pointer]:
+                - link "Consultez l'offre Stagiaire R&D Machine Learning" [ref=e1483]:
+                  - /url: /fr/companies/craft-ai/jobs/stagiaire-r-d-machine-learning_paris
+                  - img "Craft AI" [ref=e1484]
+                - generic [ref=e1485]:
+                  - link "Stagiaire R&D Machine Learning" [ref=e1486]:
+                    - /url: /fr/companies/craft-ai/jobs/stagiaire-r-d-machine-learning_paris
+                    - heading "Stagiaire R&D Machine Learning" [level=2] [ref=e1487]:
+                      - mark [ref=e1488]:
+                        - text: Stagiaire R&D
+                        - emphasis [ref=e1489]: Machine
+                        - emphasis [ref=e1490]: Learning
+                  - generic [ref=e1491]:
+                    - img "Craft AI" [ref=e1493]
+                    - generic [ref=e1494]: Craft AI
+                  - paragraph [ref=e1495]: Plateforme MLOps/LLMOps pour déployer et monitorer des applications d'IA.
+                  - generic [ref=e1496]:
+                    - generic [ref=e1497]:
+                      - img [ref=e1498]
+                      - text: Stage
+                    - generic [ref=e1500]:
+                      - img [ref=e1501]
+                      - generic [ref=e1503]: Paris
+                    - generic [ref=e1504]:
+                      - img [ref=e1505]
+                      - generic [ref=e1507]: Télétravail fréquent
+                      - img [ref=e1509]
+                    - generic [ref=e1511]:
+                      - img [ref=e1512]
+                      - generic [ref=e1514]: "Salaire :"
+                      - text: 1,1K € par mois
+                    - generic [ref=e1515]:
+                      - img [ref=e1516]
+                      - generic [ref=e1518]: Intelligence artificielle / Machine Learning, SaaS / Cloud Services
+                    - generic [ref=e1519]:
+                      - img [ref=e1520]
+                      - generic [ref=e1522]: 29 collaborateurs
+                  - generic [ref=e1523]:
+                    - generic [ref=e1524]:
+                      - img [ref=e1525]
+                      - paragraph [ref=e1527]:
+                        - time [ref=e1528]: il y a 25 jours
+                    - button "Sauvegarder" [ref=e1530]:
+                      - generic [ref=e1531]:
+                        - img [ref=e1532]
+                        - img [ref=e1534]
+            - listitem [ref=e1544]:
+              - generic [ref=e1546] [cursor=pointer]:
+                - link "Consultez l'offre ALTERNANCE - Recherche de chemins d’attaque par Reinforcement Learning F/H" [ref=e1547]:
+                  - /url: /fr/companies/thales/jobs/recherche-de-chemins-d-attaque-par-reinforcement-learning-f-h_gennevilliers
+                  - img "Thales" [ref=e1548]
+                - generic [ref=e1549]:
+                  - link "ALTERNANCE - Recherche de chemins d’attaque par Reinforcement Learning F/H" [ref=e1550]:
+                    - /url: /fr/companies/thales/jobs/recherche-de-chemins-d-attaque-par-reinforcement-learning-f-h_gennevilliers
+                    - heading "ALTERNANCE - Recherche de chemins d’attaque par Reinforcement Learning F/H" [level=2] [ref=e1551]:
+                      - mark [ref=e1552]:
+                        - text: ALTERNANCE - Recherche de chemins d’attaque par Reinforcement
+                        - emphasis [ref=e1553]: Learning
+                        - text: F/H
+                  - generic [ref=e1554]:
+                    - img "Thales" [ref=e1556]
+                    - generic [ref=e1557]: Thales
+                  - paragraph [ref=e1558]: Solutions technologiques pour un avenir sûr et durable.
+                  - generic [ref=e1559]:
+                    - generic [ref=e1560]:
+                      - img [ref=e1561]
+                      - text: Alternance
+                    - generic [ref=e1563]:
+                      - img [ref=e1564]
+                      - generic [ref=e1566]: Gennevilliers
+                    - generic [ref=e1567]:
+                      - img [ref=e1568]
+                      - generic [ref=e1570]: Logiciels, Cybersécurité
+                    - generic [ref=e1571]:
+                      - img [ref=e1572]
+                      - generic [ref=e1574]: 80 000 collaborateurs
+                  - generic [ref=e1575]:
+                    - generic [ref=e1576]:
+                      - img [ref=e1577]
+                      - paragraph [ref=e1579]:
+                        - time [ref=e1580]: le mois dernier
+                    - button "Sauvegarder" [ref=e1582]:
+                      - generic [ref=e1583]:
+                        - img [ref=e1584]
+                        - img [ref=e1586]
+            - listitem [ref=e1596]:
+              - generic [ref=e1598] [cursor=pointer]:
+                - link "Consultez l'offre Senior/Staff Machine Learning Engineer - Health Evaluation - AI Teams (x/f/m)" [ref=e1599]:
+                  - /url: /fr/companies/doctolib/jobs/senior-machine-learning-engineer-x-f-m_paris
+                  - img "Doctolib" [ref=e1600]
+                - generic [ref=e1601]:
+                  - link "Senior/Staff Machine Learning Engineer - Health Evaluation - AI Teams (x/f/m)" [ref=e1602]:
+                    - /url: /fr/companies/doctolib/jobs/senior-machine-learning-engineer-x-f-m_paris
+                    - heading "Senior/Staff Machine Learning Engineer - Health Evaluation - AI Teams (x/f/m)" [level=2] [ref=e1603]:
+                      - mark [ref=e1604]:
+                        - text: Senior/Staff
+                        - emphasis [ref=e1605]: Machine
+                        - emphasis [ref=e1606]: Learning
+                        - text: Engineer - Health Evaluation - AI Teams (x/f/m)
+                  - generic [ref=e1607]:
+                    - img "Doctolib" [ref=e1609]
+                    - generic [ref=e1610]: Doctolib
+                  - paragraph [ref=e1611]: Plateforme de santé pour praticiens et patients en Europe.
+                  - generic [ref=e1612]:
+                    - generic [ref=e1613]:
+                      - img [ref=e1614]
+                      - text: CDI
+                    - generic [ref=e1616]:
+                      - img [ref=e1617]
+                      - generic [ref=e1619]: Paris
+                    - generic [ref=e1620]:
+                      - img [ref=e1621]
+                      - generic [ref=e1623]: Télétravail fréquent
+                      - img [ref=e1625]
+                    - generic [ref=e1627]:
+                      - img [ref=e1628]
+                      - generic [ref=e1630]: Application mobile, Logiciels
+                    - generic [ref=e1631]:
+                      - img [ref=e1632]
+                      - generic [ref=e1634]: 3 000 collaborateurs
+                  - generic [ref=e1635]:
+                    - generic [ref=e1636]:
+                      - img [ref=e1637]
+                      - paragraph [ref=e1639]:
+                        - time [ref=e1640]: le mois dernier
+                    - button "Sauvegarder" [ref=e1642]:
+                      - generic [ref=e1643]:
+                        - img [ref=e1644]
+                        - img [ref=e1646]
+            - listitem [ref=e1656]:
+              - generic [ref=e1658] [cursor=pointer]:
+                - link "Consultez l'offre Experienced/Senior Machine Learning Engineer - Squad Scribe" [ref=e1659]:
+                  - /url: /fr/companies/doctrine/jobs/experienced-senior-machine-learning-engineer-squad-scribe_paris
+                  - img "Doctrine" [ref=e1660]
+                - generic [ref=e1661]:
+                  - link "Experienced/Senior Machine Learning Engineer - Squad Scribe" [ref=e1662]:
+                    - /url: /fr/companies/doctrine/jobs/experienced-senior-machine-learning-engineer-squad-scribe_paris
+                    - heading "Experienced/Senior Machine Learning Engineer - Squad Scribe" [level=2] [ref=e1663]:
+                      - mark [ref=e1664]:
+                        - text: Experienced/Senior
+                        - emphasis [ref=e1665]: Machine
+                        - emphasis [ref=e1666]: Learning
+                        - text: Engineer - Squad Scribe
+                  - generic [ref=e1667]:
+                    - img "Doctrine" [ref=e1669]
+                    - generic [ref=e1670]: Doctrine
+                  - paragraph [ref=e1671]: IA juridique pour juristes et avocats en Europe.
+                  - generic [ref=e1672]:
+                    - generic [ref=e1673]:
+                      - img [ref=e1674]
+                      - text: CDI
+                    - generic [ref=e1676]:
+                      - img [ref=e1677]
+                      - generic [ref=e1679]: Paris
+                    - generic [ref=e1680]:
+                      - img [ref=e1681]
+                      - generic [ref=e1683]: Télétravail fréquent
+                      - img [ref=e1685]
+                    - generic [ref=e1687]:
+                      - img [ref=e1688]
+                      - generic [ref=e1690]: Logiciels, Intelligence artificielle / Machine Learning
+                    - generic [ref=e1691]:
+                      - img [ref=e1692]
+                      - generic [ref=e1694]: 250 collaborateurs
+                  - generic [ref=e1695]:
+                    - generic [ref=e1696]:
+                      - img [ref=e1697]
+                      - paragraph [ref=e1699]:
+                        - time [ref=e1700]: le mois dernier
+                    - button "Sauvegarder" [ref=e1702]:
+                      - generic [ref=e1703]:
+                        - img [ref=e1704]
+                        - img [ref=e1706]
+            - listitem [ref=e1716]:
+              - generic [ref=e1718] [cursor=pointer]:
+                - link "Consultez l'offre [SFR] Alternant(e) – Chef de Projet (h/f) – Machine Learning et Business Analytics" [ref=e1719]:
+                  - /url: /fr/companies/altice-france/jobs/sfr-alternant-chef-de-projet-h-f-machine-learning-et-business-analytics_champs-sur-marne
+                  - img "SFR - Altice France" [ref=e1720]
+                - generic [ref=e1721]:
+                  - link "[SFR] Alternant(e) – Chef de Projet (h/f) – Machine Learning et Business Analytics" [ref=e1722]:
+                    - /url: /fr/companies/altice-france/jobs/sfr-alternant-chef-de-projet-h-f-machine-learning-et-business-analytics_champs-sur-marne
+                    - heading "[SFR] Alternant(e) – Chef de Projet (h/f) – Machine Learning et Business Analytics" [level=2] [ref=e1723]:
+                      - mark [ref=e1724]:
+                        - text: "[SFR] Alternant(e) – Chef de Projet (h/f) –"
+                        - emphasis [ref=e1725]: Machine
+                        - emphasis [ref=e1726]: Learning
+                        - text: et Business Analytics
+                  - generic [ref=e1727]:
+                    - img "SFR - Altice France" [ref=e1729]
+                    - generic [ref=e1730]: SFR - Altice France
+                  - paragraph [ref=e1731]: Opérateur télécoms innovant avec réseau puissant et expertises en IA et cloud.
+                  - generic [ref=e1732]:
+                    - generic [ref=e1733]:
+                      - img [ref=e1734]
+                      - text: Alternance
+                    - generic [ref=e1736]:
+                      - img [ref=e1737]
+                      - generic [ref=e1739]: Champs-sur-Marne
+                    - generic [ref=e1740]:
+                      - img [ref=e1741]
+                      - generic [ref=e1743]: IT / Digital, Cybersécurité
+                    - generic [ref=e1744]:
+                      - img [ref=e1745]
+                      - generic [ref=e1747]: 8 000 collaborateurs
+                  - generic [ref=e1748]:
+                    - generic [ref=e1749]:
+                      - img [ref=e1750]
+                      - paragraph [ref=e1752]:
+                        - time [ref=e1753]: le mois dernier
+                    - button "Sauvegarder" [ref=e1755]:
+                      - generic [ref=e1756]:
+                        - img [ref=e1757]
+                        - img [ref=e1759]
+            - listitem [ref=e1769]:
+              - generic [ref=e1771] [cursor=pointer]:
+                - link "Consultez l'offre Senior Machine Learning Engineer" [ref=e1772]:
+                  - /url: /fr/companies/nabla/jobs/senior-machine-learning-engineer_paris_NABLA_2y81yJz
+                  - img "Nabla" [ref=e1773]
+                - generic [ref=e1774]:
+                  - link "Senior Machine Learning Engineer" [ref=e1775]:
+                    - /url: /fr/companies/nabla/jobs/senior-machine-learning-engineer_paris_NABLA_2y81yJz
+                    - heading "Senior Machine Learning Engineer" [level=2] [ref=e1776]:
+                      - mark [ref=e1777]:
+                        - text: Senior
+                        - emphasis [ref=e1778]: Machine
+                        - emphasis [ref=e1779]: Learning
+                        - text: Engineer
+                  - generic [ref=e1780]:
+                    - img "Nabla" [ref=e1782]
+                    - generic [ref=e1783]: Nabla
+                  - paragraph [ref=e1784]: AI assistant for streamlining clinical documentation in healthcare.
+                  - generic [ref=e1785]:
+                    - generic [ref=e1786]:
+                      - img [ref=e1787]
+                      - text: CDI
+                    - generic [ref=e1789]:
+                      - img [ref=e1790]
+                      - generic [ref=e1792]: Paris
+                    - generic [ref=e1793]:
+                      - img [ref=e1794]
+                      - generic [ref=e1796]: Télétravail fréquent
+                      - img [ref=e1798]
+                    - generic [ref=e1800]:
+                      - img [ref=e1801]
+                      - generic [ref=e1803]: Intelligence artificielle / Machine Learning, Big Data
+                    - generic [ref=e1804]:
+                      - img [ref=e1805]
+                      - generic [ref=e1807]: 120 collaborateurs
+                  - generic [ref=e1808]:
+                    - generic [ref=e1809]:
+                      - img [ref=e1810]
+                      - paragraph [ref=e1812]:
+                        - time [ref=e1813]: le mois dernier
+                    - button "Sauvegarder" [ref=e1815]:
+                      - generic [ref=e1816]:
+                        - img [ref=e1817]
+                        - img [ref=e1819]
+            - listitem [ref=e1829]:
+              - generic [ref=e1831] [cursor=pointer]:
+                - link "Consultez l'offre Experienced/Senior Machine Learning Engineer - Squad Maât" [ref=e1832]:
+                  - /url: /fr/companies/doctrine/jobs/experienced-senior-backend-engineer_paris
+                  - img "Doctrine" [ref=e1833]
+                  - generic [ref=e1836]: Déjà vu
+                - generic [ref=e1837]:
+                  - link "Experienced/Senior Machine Learning Engineer - Squad Maât" [ref=e1838]:
+                    - /url: /fr/companies/doctrine/jobs/experienced-senior-backend-engineer_paris
+                    - heading "Experienced/Senior Machine Learning Engineer - Squad Maât" [level=2] [ref=e1839]:
+                      - mark [ref=e1840]:
+                        - text: Experienced/Senior
+                        - emphasis [ref=e1841]: Machine
+                        - emphasis [ref=e1842]: Learning
+                        - text: Engineer - Squad Maât
+                  - generic [ref=e1843]:
+                    - img "Doctrine" [ref=e1845]
+                    - generic [ref=e1846]: Doctrine
+                  - paragraph [ref=e1847]: IA juridique pour juristes et avocats en Europe.
+                  - generic [ref=e1848]:
+                    - generic [ref=e1849]:
+                      - img [ref=e1850]
+                      - text: CDI
+                    - generic [ref=e1852]:
+                      - img [ref=e1853]
+                      - generic [ref=e1855]: Paris
+                    - generic [ref=e1856]:
+                      - img [ref=e1857]
+                      - generic [ref=e1859]: Télétravail fréquent
+                      - img [ref=e1861]
+                    - generic [ref=e1863]:
+                      - img [ref=e1864]
+                      - generic [ref=e1866]: Logiciels, Intelligence artificielle / Machine Learning
+                    - generic [ref=e1867]:
+                      - img [ref=e1868]
+                      - generic [ref=e1870]: 250 collaborateurs
+                  - generic [ref=e1871]:
+                    - generic [ref=e1872]:
+                      - img [ref=e1873]
+                      - paragraph [ref=e1875]:
+                        - time [ref=e1876]: le mois dernier
+                    - button "Sauvegarder" [ref=e1878]:
+                      - generic [ref=e1879]:
+                        - img [ref=e1880]
+                        - img [ref=e1882]
+            - listitem [ref=e1892]:
+              - generic [ref=e1894] [cursor=pointer]:
+                - link "Consultez l'offre Lead Machine Learning Engineer (M/F) - CDI - Paris" [ref=e1895]:
+                  - /url: /fr/companies/wiremind/jobs/lead-machine-learning-engineer-m-f-cdi-paris_paris
+                  - img "Wiremind" [ref=e1896]
+                - generic [ref=e1897]:
+                  - link "Lead Machine Learning Engineer (M/F) - CDI - Paris" [ref=e1898]:
+                    - /url: /fr/companies/wiremind/jobs/lead-machine-learning-engineer-m-f-cdi-paris_paris
+                    - heading "Lead Machine Learning Engineer (M/F) - CDI - Paris" [level=2] [ref=e1899]:
+                      - mark [ref=e1900]:
+                        - text: Lead
+                        - emphasis [ref=e1901]: Machine
+                        - emphasis [ref=e1902]: Learning
+                        - text: Engineer (M/F) - CDI - Paris
+                  - generic [ref=e1903]:
+                    - img "Wiremind" [ref=e1905]
+                    - generic [ref=e1906]: Wiremind
+                  - paragraph [ref=e1907]: Solutions de gestion des stocks et d'optimisation pour divers secteurs.
+                  - generic [ref=e1908]:
+                    - generic [ref=e1909]:
+                      - img [ref=e1910]
+                      - text: CDI
+                    - generic [ref=e1912]:
+                      - img [ref=e1913]
+                      - generic [ref=e1915]: Paris
+                    - generic [ref=e1916]:
+                      - img [ref=e1917]
+                      - generic [ref=e1919]: Télétravail total
+                      - img [ref=e1921]
+                    - generic [ref=e1923]:
+                      - img [ref=e1924]
+                      - generic [ref=e1926]: Logiciels, Mobilité
+                    - generic [ref=e1927]:
+                      - img [ref=e1928]
+                      - generic [ref=e1930]: 150 collaborateurs
+                  - generic [ref=e1931]:
+                    - generic [ref=e1932]:
+                      - img [ref=e1933]
+                      - paragraph [ref=e1935]:
+                        - time [ref=e1936]: le mois dernier
+                    - button "Sauvegarder" [ref=e1938]:
+                      - generic [ref=e1939]:
+                        - img [ref=e1940]
+                        - img [ref=e1942]
+            - listitem [ref=e1952]:
+              - generic [ref=e1954] [cursor=pointer]:
+                - link "Consultez l'offre Staff Machine Learning Engineer" [ref=e1955]:
+                  - /url: /fr/companies/nabla/jobs/senior-machine-learning-engineer_paris_NABLA_2gwLkP5
+                  - img "Nabla" [ref=e1956]
+                - generic [ref=e1957]:
+                  - link "Staff Machine Learning Engineer" [ref=e1958]:
+                    - /url: /fr/companies/nabla/jobs/senior-machine-learning-engineer_paris_NABLA_2gwLkP5
+                    - heading "Staff Machine Learning Engineer" [level=2] [ref=e1959]:
+                      - mark [ref=e1960]:
+                        - text: Staff
+                        - emphasis [ref=e1961]: Machine
+                        - emphasis [ref=e1962]: Learning
+                        - text: Engineer
+                  - generic [ref=e1963]:
+                    - img "Nabla" [ref=e1965]
+                    - generic [ref=e1966]: Nabla
+                  - paragraph [ref=e1967]: AI assistant for streamlining clinical documentation in healthcare.
+                  - generic [ref=e1968]:
+                    - generic [ref=e1969]:
+                      - img [ref=e1970]
+                      - text: CDI
+                    - generic [ref=e1972]:
+                      - img [ref=e1973]
+                      - generic [ref=e1975]: Paris
+                    - generic [ref=e1976]:
+                      - img [ref=e1977]
+                      - generic [ref=e1979]: Télétravail fréquent
+                      - img [ref=e1981]
+                    - generic [ref=e1983]:
+                      - img [ref=e1984]
+                      - generic [ref=e1986]: Intelligence artificielle / Machine Learning, Big Data
+                    - generic [ref=e1987]:
+                      - img [ref=e1988]
+                      - generic [ref=e1990]: 120 collaborateurs
+                  - generic [ref=e1991]:
+                    - generic [ref=e1992]:
+                      - img [ref=e1993]
+                      - paragraph [ref=e1995]:
+                        - time [ref=e1996]: le mois dernier
+                    - button "Sauvegarder" [ref=e1998]:
+                      - generic [ref=e1999]:
+                        - img [ref=e2000]
+                        - img [ref=e2002]
+            - listitem [ref=e2012]:
+              - generic [ref=e2014] [cursor=pointer]:
+                - link "Consultez l'offre Ingénieur de recherche en Optimisation et Machine Learning (H/F)" [ref=e2015]:
+                  - /url: /fr/companies/thales/jobs/ingenieur-de-recherche-en-optimisation-et-machine-learning-h-f_palaiseau
+                  - img "Thales" [ref=e2016]
+                - generic [ref=e2017]:
+                  - link "Ingénieur de recherche en Optimisation et Machine Learning (H/F)" [ref=e2018]:
+                    - /url: /fr/companies/thales/jobs/ingenieur-de-recherche-en-optimisation-et-machine-learning-h-f_palaiseau
+                    - heading "Ingénieur de recherche en Optimisation et Machine Learning (H/F)" [level=2] [ref=e2019]:
+                      - mark [ref=e2020]:
+                        - text: Ingénieur de recherche en Optimisation et
+                        - emphasis [ref=e2021]: Machine
+                        - emphasis [ref=e2022]: Learning
+                        - text: (H/F)
+                  - generic [ref=e2023]:
+                    - img "Thales" [ref=e2025]
+                    - generic [ref=e2026]: Thales
+                  - paragraph [ref=e2027]: Solutions technologiques pour un avenir sûr et durable.
+                  - generic [ref=e2028]:
+                    - generic [ref=e2029]:
+                      - img [ref=e2030]
+                      - text: CDI
+                    - generic [ref=e2032]:
+                      - img [ref=e2033]
+                      - generic [ref=e2035]: Palaiseau
+                    - generic [ref=e2036]:
+                      - img [ref=e2037]
+                      - generic [ref=e2039]: Logiciels, Cybersécurité
+                    - generic [ref=e2040]:
+                      - img [ref=e2041]
+                      - generic [ref=e2043]: 80 000 collaborateurs
+                  - generic [ref=e2044]:
+                    - generic [ref=e2045]:
+                      - img [ref=e2046]
+                      - paragraph [ref=e2048]:
+                        - time [ref=e2049]: le mois dernier
+                    - button "Sauvegarder" [ref=e2051]:
+                      - generic [ref=e2052]:
+                        - img [ref=e2053]
+                        - img [ref=e2055]
+          - navigation "Pagination" [ref=e2066]:
+            - list [ref=e2067]:
+              - listitem [ref=e2068]:
+                - link [disabled] [ref=e2069] [cursor=pointer]:
+                  - /url: ""
+                  - img [ref=e2070]
+              - listitem [ref=e2072]:
+                - link "1" [ref=e2073] [cursor=pointer]:
+                  - /url: ""
+              - listitem [ref=e2074]:
+                - link "2" [ref=e2075] [cursor=pointer]:
+                  - /url: ""
+              - listitem [ref=e2076]:
+                - link "3" [ref=e2077] [cursor=pointer]:
+                  - /url: ""
+              - listitem [ref=e2078]:
+                - link "4" [ref=e2079] [cursor=pointer]:
+                  - /url: ""
+              - listitem [ref=e2080]:
+                - link "5" [ref=e2081] [cursor=pointer]:
+                  - /url: ""
+              - listitem [ref=e2082]:
+                - generic [ref=e2083]: ...
+              - listitem [ref=e2084]:
+                - link "18" [ref=e2085] [cursor=pointer]:
+                  - /url: ""
+              - listitem [ref=e2086]:
+                - link [ref=e2087] [cursor=pointer]:
+                  - /url: ""
+                  - img [ref=e2088]
+        - button "Créer une alerte" [ref=e2093] [cursor=pointer]:
+          - img [ref=e2095]
+          - generic [ref=e2100]: Créer une alerte
+    - contentinfo [ref=e2101]:
+      - generic [ref=e2103]:
+        - generic [ref=e2104]:
+          - generic [ref=e2105]:
+            - link "Welcome to the Jungle logo" [ref=e2106] [cursor=pointer]:
+              - /url: /fr
+              - img "Welcome to the Jungle logo" [ref=e2107]
+            - navigation "social networks navigation" [ref=e2108]:
+              - link "Facebook" [ref=e2109] [cursor=pointer]:
+                - /url: https://www.facebook.com/wttj.fr
+                - img [ref=e2110]
+              - link "Twitter" [ref=e2112] [cursor=pointer]:
+                - /url: https://twitter.com/wttj_fr
+                - img [ref=e2113]
+              - link "LinkedIn" [ref=e2115] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/wttj-fr
+                - img [ref=e2116]
+              - link "YouTube" [ref=e2118] [cursor=pointer]:
+                - /url: https://www.youtube.com/channel/UCpJfUQ72fmt4qAbkDvz0iNQ
+                - img [ref=e2119]
+              - link "Instagram" [ref=e2121] [cursor=pointer]:
+                - /url: https://www.instagram.com/welcometothejungle_fr
+                - img [ref=e2122]
+          - navigation "about navigation" [ref=e2125]:
+            - paragraph [ref=e2126]: A propos
+            - list [ref=e2127]:
+              - listitem [ref=e2128]:
+                - link "Concept" [ref=e2129] [cursor=pointer]:
+                  - /url: /fr/pages/concept
+              - listitem [ref=e2130]:
+                - link "Qui sommes-nous ?" [ref=e2131] [cursor=pointer]:
+                  - /url: /fr/companies/wttj
+              - listitem [ref=e2132]:
+                - link "Offres d'emploi" [ref=e2133] [cursor=pointer]:
+                  - /url: /fr/pages/emploi
+              - listitem [ref=e2134]:
+                - link "Offres de stage" [ref=e2135] [cursor=pointer]:
+                  - /url: /fr/pages/stage
+              - listitem [ref=e2136]:
+                - link "Centre d'aide" [ref=e2137] [cursor=pointer]:
+                  - /url: https://help.welcometothejungle.com/
+          - navigation "meet us navigation" [ref=e2139]:
+            - paragraph [ref=e2140]: Nous rencontrer
+            - list [ref=e2141]:
+              - listitem [ref=e2142]:
+                - link "Human After All" [ref=e2143] [cursor=pointer]:
+                  - /url: https://landings.welcometothejungle.com/fr/human-after-all-2022-global
+              - listitem [ref=e2144]:
+                - link "Presse" [ref=e2145] [cursor=pointer]:
+                  - /url: https://solutions.welcometothejungle.com/presse/
+              - listitem [ref=e2146]:
+                - link "Jobs" [ref=e2147] [cursor=pointer]:
+                  - /url: /fr/companies/wttj/jobs
+              - listitem [ref=e2148]:
+                - link "Tarifs" [ref=e2149] [cursor=pointer]:
+                  - /url: https://solutions.welcometothejungle.com/contact/?utm_source=welcometothejungle.com&utm_medium=referral&utm_campaign=cta_pricing_footer
+              - listitem [ref=e2150]:
+                - link "Besoin d’aide ?" [ref=e2151] [cursor=pointer]:
+                  - /url: https://help.welcometothejungle.com/kb-tickets/new
+              - listitem [ref=e2152]:
+                - link "Assistance entreprise" [ref=e2153] [cursor=pointer]:
+                  - /url: https://help.welcometothejungle.com/kb-tickets/new
+          - generic [ref=e2155]:
+            - paragraph [ref=e2156]: La newsletter qui fait le taf
+            - generic [ref=e2158]:
+              - paragraph [ref=e2159]: Une fois par semaine, des histoires, des jobs et des conseils dans votre boite mail.
+              - generic [ref=e2161]:
+                - textbox "Email" [ref=e2165]
+                - button "Je m'abonne" [ref=e2166] [cursor=pointer]:
+                  - generic [ref=e2167]: Je m'abonne
+              - generic [ref=e2168]:
+                - text: Vous pouvez vous désabonner à tout moment. On n'est pas susceptibles, promis. Pour en savoir plus sur notre politique de protection des données,
+                - link "cliquez-ici." [ref=e2169] [cursor=pointer]:
+                  - /url: /fr/pages/privacy-policy
+                  - generic [ref=e2170]: cliquez-ici.
+        - generic [ref=e2171]:
+          - link "Welcome Solutions" [ref=e2174] [cursor=pointer]:
+            - /url: https://solutions.welcometothejungle.com/
+            - img "Welcome Solutions" [ref=e2175]
+          - generic [ref=e2176]:
+            - link "Employeurs" [ref=e2177] [cursor=pointer]:
+              - /url: https://solutions.welcometothejungle.com/?utm_source=welcometothejungle.com&utm_medium=referral&utm_campaign=cta_become_customer_footer
+              - generic [ref=e2178]: Employeurs
+            - link "Mon espace employeur" [ref=e2179] [cursor=pointer]:
+              - /url: https://admin.welcometothejungle.com
+              - generic [ref=e2180]: Mon espace employeur
+        - generic [ref=e2181]:
+          - list [ref=e2182]:
+            - listitem [ref=e2183]:
+              - link "Mentions légales" [ref=e2184] [cursor=pointer]:
+                - /url: /fr/pages/legal
+            - listitem [ref=e2185]:
+              - link "CGU" [ref=e2186] [cursor=pointer]:
+                - /url: /fr/pages/terms
+            - listitem [ref=e2187]:
+              - link "Politique de confidentialité" [ref=e2188] [cursor=pointer]:
+                - /url: /fr/pages/privacy-policy
+            - listitem [ref=e2189]:
+              - link "Chartes Welcome to the Jungle" [ref=e2190] [cursor=pointer]:
+                - /url: /fr/pages/charters
+            - listitem [ref=e2191]:
+              - link "Politique cookies" [ref=e2192] [cursor=pointer]:
+                - /url: /fr/pages/cookies-policy
+            - listitem [ref=e2193]:
+              - button "Gestion des cookies" [ref=e2194] [cursor=pointer]
+          - button "France (FR)" [ref=e2197] [cursor=pointer]:
+            - img [ref=e2198]
+            - generic [ref=e2203]: France (FR)
+            - img [ref=e2204]
+        - generic [ref=e2206]:
+          - link "Nouvelles entreprises" [ref=e2207] [cursor=pointer]:
+            - /url: /fr/directory
+            - generic [ref=e2208]: Nouvelles entreprises
+          - generic [ref=e2209]:
+            - link "A" [ref=e2210] [cursor=pointer]:
+              - /url: /fr/directory/a
+              - generic [ref=e2211]: A
+            - link "B" [ref=e2212] [cursor=pointer]:
+              - /url: /fr/directory/b
+              - generic [ref=e2213]: B
+            - link "C" [ref=e2214] [cursor=pointer]:
+              - /url: /fr/directory/c
+              - generic [ref=e2215]: C
+            - link "D" [ref=e2216] [cursor=pointer]:
+              - /url: /fr/directory/d
+              - generic [ref=e2217]: D
+            - link "E" [ref=e2218] [cursor=pointer]:
+              - /url: /fr/directory/e
+              - generic [ref=e2219]: E
+            - link "F" [ref=e2220] [cursor=pointer]:
+              - /url: /fr/directory/f
+              - generic [ref=e2221]: F
+            - link "G" [ref=e2222] [cursor=pointer]:
+              - /url: /fr/directory/g
+              - generic [ref=e2223]: G
+            - link "H" [ref=e2224] [cursor=pointer]:
+              - /url: /fr/directory/h
+              - generic [ref=e2225]: H
+            - link "I" [ref=e2226] [cursor=pointer]:
+              - /url: /fr/directory/i
+              - generic [ref=e2227]: I
+            - link "J" [ref=e2228] [cursor=pointer]:
+              - /url: /fr/directory/j
+              - generic [ref=e2229]: J
+            - link "K" [ref=e2230] [cursor=pointer]:
+              - /url: /fr/directory/k
+              - generic [ref=e2231]: K
+            - link "L" [ref=e2232] [cursor=pointer]:
+              - /url: /fr/directory/l
+              - generic [ref=e2233]: L
+            - link "M" [ref=e2234] [cursor=pointer]:
+              - /url: /fr/directory/m
+              - generic [ref=e2235]: M
+            - link "N" [ref=e2236] [cursor=pointer]:
+              - /url: /fr/directory/n
+              - generic [ref=e2237]: "N"
+            - link "O" [ref=e2238] [cursor=pointer]:
+              - /url: /fr/directory/o
+              - generic [ref=e2239]: O
+            - link "P" [ref=e2240] [cursor=pointer]:
+              - /url: /fr/directory/p
+              - generic [ref=e2241]: P
+            - link "Q" [ref=e2242] [cursor=pointer]:
+              - /url: /fr/directory/q
+              - generic [ref=e2243]: Q
+            - link "R" [ref=e2244] [cursor=pointer]:
+              - /url: /fr/directory/r
+              - generic [ref=e2245]: R
+            - link "S" [ref=e2246] [cursor=pointer]:
+              - /url: /fr/directory/s
+              - generic [ref=e2247]: S
+            - link "T" [ref=e2248] [cursor=pointer]:
+              - /url: /fr/directory/t
+              - generic [ref=e2249]: T
+            - link "U" [ref=e2250] [cursor=pointer]:
+              - /url: /fr/directory/u
+              - generic [ref=e2251]: U
+            - link "V" [ref=e2252] [cursor=pointer]:
+              - /url: /fr/directory/v
+              - generic [ref=e2253]: V
+            - link "W" [ref=e2254] [cursor=pointer]:
+              - /url: /fr/directory/w
+              - generic [ref=e2255]: W
+            - link "X" [ref=e2256] [cursor=pointer]:
+              - /url: /fr/directory/x
+              - generic [ref=e2257]: X
+            - link "Y" [ref=e2258] [cursor=pointer]:
+              - /url: /fr/directory/y
+              - generic [ref=e2259]: "Y"
+            - link "Z" [ref=e2260] [cursor=pointer]:
+              - /url: /fr/directory/z
+              - generic [ref=e2261]: Z
+            - link "1-9" [ref=e2262] [cursor=pointer]:
+              - /url: /fr/directory/other
+              - generic [ref=e2263]: 1-9
+  - status [ref=e2264]

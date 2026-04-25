@@ -4,6 +4,7 @@ import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js"
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import type { Transport } from "@modelcontextprotocol/sdk/shared/transport.js";
 import type { CallToolResult, Prompt, Resource, Tool } from "@modelcontextprotocol/sdk/types.js";
+import { FastBrowserMcpTarget } from "../fastbrowser_types";
 
 export type StdioConfig = {
 	type: "stdio";
@@ -23,6 +24,7 @@ export type McpTransportConfig = StdioConfig | HttpConfig;
 export interface McpClientOptions {
 	name: string;
 	version: string;
+	mcpTarget: FastBrowserMcpTarget;
 	transport: McpTransportConfig;
 }
 
@@ -35,13 +37,19 @@ export interface McpClientOptions {
 export class McpClient {
 	private readonly client: Client;
 	private transport?: Transport;
+	private mcpTarget: FastBrowserMcpTarget;
 	private connected = false;
 
 	constructor(private readonly options: McpClientOptions) {
+		this.mcpTarget = options.mcpTarget;
 		this.client = new Client({
 			name: options.name,
 			version: options.version,
 		});
+	}
+
+	async getMcpTarget(): Promise<FastBrowserMcpTarget> {
+		return this.mcpTarget;
 	}
 
 	async connect(): Promise<void> {
