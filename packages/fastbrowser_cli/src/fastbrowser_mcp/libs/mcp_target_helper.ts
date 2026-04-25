@@ -1,3 +1,4 @@
+import { ta } from "zod/locales";
 import { FastBrowserMcpTarget } from "../fastbrowser_types";
 
 export type TargetToolConfig = {
@@ -10,6 +11,7 @@ export class McpTargetHelper {
 		listPages: "list_pages",
 		newPage: "new_page",
 		closePage: "close_page",
+		takeSnapshot: "take_snapshot",
 		navigatePage: "navigate_page",
 		querySelectorsAll: "querySelectorsAll",
 		querySelectors: "querySelectors",
@@ -74,13 +76,39 @@ export class McpTargetHelper {
 	//	For each target tool
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
-	
+
 
 	static async targetToolListPages(mcpTarget: FastBrowserMcpTarget): Promise<TargetToolConfig> {
 		if (mcpTarget === 'chrome_devtools') {
-			return { toolName: 'list_pages', toolArgs: {} };
+			return {
+				toolName: 'list_pages', toolArgs: {
+					// No arguments needed for listing pages in Chrome DevTools MCP
+				}
+			};
 		} else if (mcpTarget === 'playwright') {
-			return { toolName: 'browser_tabs', toolArgs: {} };
+			return {
+				toolName: 'browser_tabs', toolArgs: {
+					action: 'list',
+				}
+			};
+		} else {
+			throw new Error(`Unsupported MCP target: ${mcpTarget}`);
+		}
+	}
+
+	static async targetToolNavigatePage(mcpTarget: FastBrowserMcpTarget, url: string): Promise<TargetToolConfig> {
+		if (mcpTarget === 'chrome_devtools') {
+			return {
+				toolName: 'navigate_page', toolArgs: {
+					url
+				}
+			};
+		} else if (mcpTarget === 'playwright') {
+			return {
+				toolName: 'browser_navigate', toolArgs: {
+					url,
+				}
+			};
 		} else {
 			throw new Error(`Unsupported MCP target: ${mcpTarget}`);
 		}
@@ -91,6 +119,16 @@ export class McpTargetHelper {
 			return { toolName: 'take_snapshot', toolArgs: {} };
 		} else if (mcpTarget === 'playwright') {
 			return { toolName: 'browser_snapshot', toolArgs: {} };
+		} else {
+			throw new Error(`Unsupported MCP target: ${mcpTarget}`);
+		}
+	}
+
+	static async targetToolClick(mcpTarget: FastBrowserMcpTarget, uid: string): Promise<TargetToolConfig> {
+		if (mcpTarget === 'chrome_devtools') {
+			return { toolName: 'click', toolArgs: { uid } };
+		} else if (mcpTarget === 'playwright') {
+			return { toolName: 'browser_click', toolArgs: { ref: uid } };
 		} else {
 			throw new Error(`Unsupported MCP target: ${mcpTarget}`);
 		}

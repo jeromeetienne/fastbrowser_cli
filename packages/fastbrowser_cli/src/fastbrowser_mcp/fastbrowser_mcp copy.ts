@@ -11,7 +11,7 @@ import * as A11yParse from "../../../a11y_parse/dist/src/index.js";
 // local imports
 import { McpMyClient } from "./libs/mcp_client.js";
 import { McpProxy } from "./libs/mcp_proxy.js";
-import { PlaywrightHelper } from "./libs/playwright_helper.js";
+import { PlaywrightA11yConverter } from "./libs/playwright_a11y_helper.js";
 import { FastBrowserMcpTarget } from './fastbrowser_types.js';
 import {
 	QuerySelectorInputSchema,
@@ -63,7 +63,7 @@ class MainHelper {
 			const response = await mcpClient.callTool(toolName, {});
 			const responseText = response.content[0]
 			if (responseText.type !== "text") throw new Error("Unexpected content type");
-			snapshotText = PlaywrightHelper.convertToChromeDevtools(responseText.text);
+			snapshotText = PlaywrightA11yConverter.convertToChromeDevtools(responseText.text);
 		} else {
 			throw new Error(`Unsupported MCP target: ${mcpTarget}`);
 		}

@@ -32,7 +32,7 @@ type EmittedNode = {
 	flags: string[];
 };
 
-export class PlaywrightHelper {
+export class PlaywrightA11yConverter {
 	/**
 	 * Convert Playwright's `get-text-snapshot` output to the body of chrome-devtools-mcp's `take_snapshot`.
 	 *
@@ -75,7 +75,7 @@ export class PlaywrightHelper {
 			}
 			const parent = stack[stack.length - 1] as EmittedNode | undefined;
 
-			const parsed = PlaywrightHelper._parseLine(body);
+			const parsed = PlaywrightA11yConverter._parseLine(body);
 
 			if (parsed.kind === 'parent_attr') {
 				if (parent !== undefined) {
@@ -115,7 +115,7 @@ export class PlaywrightHelper {
 			stack.push(node);
 		}
 
-		return allNodes.map((node) => PlaywrightHelper._stringifyNode(node)).join('\n');
+		return allNodes.map((node) => PlaywrightA11yConverter._stringifyNode(node)).join('\n');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -132,7 +132,7 @@ export class PlaywrightHelper {
 			return { kind: 'parent_attr', key: 'placeholder', value: body.slice('/placeholder:'.length).trim() };
 		}
 		if (body.startsWith('text:')) {
-			const text = PlaywrightHelper._unquoteIfQuoted(body.slice('text:'.length).trim());
+			const text = PlaywrightA11yConverter._unquoteIfQuoted(body.slice('text:'.length).trim());
 			return { kind: 'static_text', text };
 		}
 
@@ -152,7 +152,7 @@ export class PlaywrightHelper {
 
 		let name: string | undefined;
 		if (body[i] === '"') {
-			const parsed = PlaywrightHelper._readQuotedString(body, i);
+			const parsed = PlaywrightA11yConverter._readQuotedString(body, i);
 			name = parsed.value;
 			i = parsed.next;
 		}
@@ -182,7 +182,7 @@ export class PlaywrightHelper {
 			i++;
 			const rest = body.slice(i).trim();
 			if (rest.length > 0) {
-				value = PlaywrightHelper._unquoteIfQuoted(rest);
+				value = PlaywrightA11yConverter._unquoteIfQuoted(rest);
 			}
 		}
 
@@ -235,10 +235,10 @@ export class PlaywrightHelper {
 
 	private static _stringifyNode(node: EmittedNode): string {
 		const pad = '  '.repeat(node.indent);
-		const name = node.name !== undefined ? ` "${PlaywrightHelper._escapeQuotes(node.name)}"` : '';
+		const name = node.name !== undefined ? ` "${PlaywrightA11yConverter._escapeQuotes(node.name)}"` : '';
 		const parts: string[] = [];
 		for (const flag of node.flags) parts.push(flag);
-		for (const [k, v] of node.attrs) parts.push(`${k}="${PlaywrightHelper._escapeQuotes(v)}"`);
+		for (const [k, v] of node.attrs) parts.push(`${k}="${PlaywrightA11yConverter._escapeQuotes(v)}"`);
 		const tail = parts.length > 0 ? ' ' + parts.join(' ') : '';
 		return `${pad}uid=${node.uid} ${node.role}${name}${tail}`;
 	}

@@ -1,0 +1,31 @@
+{
+    // dont search in ignored files
+    "search.useIgnoreFiles": true,
+    "search.exclude": {
+        "**/dist": true,
+        "**/node_modules": true
+    },
+    // format on save
+    "editor.formatOnSave": true,
+    // disable auto-detection of indentation to ensure consistent formatting
+    "editor.detectIndentation": false,
+    // indent with tabs and set tab size to 8
+    "[typescript]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 8
+    },
+    "[typescriptreact]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 8
+    },
+    "[JSON]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 8
+    },
+    // enable word wrap for all files
+    "editor.wordWrap": "on",
+    // to see claude worktrees
+    "git.autoRepositoryDetection": "all",
+    "git.openRepositoryInParentFolders": "always",
+    "scm.alwaysShowRepositories": true,
+}
