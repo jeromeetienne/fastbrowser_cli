@@ -50,6 +50,11 @@ class MainHelper {
 	private static async _getA11yText(mcpClient: McpMyClient): Promise<string> {
 		const mcpTarget = await mcpClient.getMcpTarget();
 		const toolConfig = await McpTargetHelper.targetToolTakeSnapshot(mcpTarget);
+
+		// FIXME: the first take_snapshot call after connecting to the MCP target often returns an empty snapshot for unknown reasons 
+		// — working around this by calling it once and discarding the result before calling it again to get the actual snapshot text
+		await mcpClient.callTool(toolConfig.toolName, toolConfig.toolArgs);
+
 		const callToolResult = await mcpClient.callTool(toolConfig.toolName, toolConfig.toolArgs);
 		const snapshotText = await ResponseFormatter.formatTakeSnapshot(mcpTarget, callToolResult);
 		// sanity check
@@ -227,6 +232,7 @@ class MainHelper {
 				const toolConfig = await McpTargetHelper.targetToolNavigatePage(mcpTarget, url);
 				const callToolResult = await mcpClient.callTool(toolConfig.toolName, toolConfig.toolArgs);
 				let outputStr = await ResponseFormatter.formatNavigatePage(mcpTarget, callToolResult);
+
 
 				return {
 					content: [{ type: "text", text: outputStr }],

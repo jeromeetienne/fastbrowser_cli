@@ -7,7 +7,7 @@ set -euo pipefail
 MESSAGE="${1:?usage: $0 \"message\"}"
 
 # 1. Open x.com (assumes you're already logged in)
-npx fastbrowser_cli navigate_page --url https://x.com/home
+npx fastbrowser_cli new_page --url https://x.com/home
 
 # 2. Open the composer (sidebar Post link → /compose/post)
 npx fastbrowser_cli click -s 'link[name="Post"]'

@@ -347,7 +347,7 @@ async function main(): Promise<void> {
 			return prev;
 		})
 		.option('--limit <number>', 'Max nodes per selector (0 = unlimited)', '0')
-		.option('--with-ancestors', 'Include ancestor nodes', true)
+		.option('--with-ancestors', 'Include ancestor nodes', false)
 		.option('--no-with-ancestors', 'Exclude ancestor nodes')
 		.option('--selectors-json <json>', 'JSON array of {selector,limit,withAncestors} for per-selector control')
 		.action(async (opts: {
@@ -367,7 +367,7 @@ async function main(): Promise<void> {
 			prev.push(value);
 			return prev;
 		})
-		.option('--with-ancestors', 'Include ancestor nodes', true)
+		.option('--with-ancestors', 'Include ancestor nodes', false)
 		.option('--no-with-ancestors', 'Exclude ancestor nodes')
 		.option('--selectors-json <json>', 'JSON array of {selector,withAncestors} for per-selector control')
 		.action(async (opts: {
