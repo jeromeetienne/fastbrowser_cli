@@ -215,9 +215,18 @@ class MainHelper {
 				}),
 			},
 			async ({ url }: { url: string }) => {
-				const toolConfig = await McpTargetHelper.targetToolNewPage(mcpTarget, url);
+				// NOTE: when running on playwright MCP, we use the navigate_page tool instead of new_page, because 
+				// playwright MCP's new_page tool open a new tab but not in the tag-group... so we cant controls it
+				// it is happening even when using playwright mcp directly
+				//
+				// const toolConfig = await McpTargetHelper.targetToolNewPage(mcpTarget, url);
+				// const callToolResult = await mcpClient.callTool(toolConfig.toolName, toolConfig.toolArgs);
+				// let outputStr = await ResponseFormatter.formatNewPage(mcpTarget, callToolResult, url);
+
+				// so working around this by calling the navigate_page tool instead of new_page when the target is playwright
+				const toolConfig = await McpTargetHelper.targetToolNavigatePage(mcpTarget, url);
 				const callToolResult = await mcpClient.callTool(toolConfig.toolName, toolConfig.toolArgs);
-				let outputStr = await ResponseFormatter.formatNewPage(mcpTarget, callToolResult, url);
+				let outputStr = await ResponseFormatter.formatNavigatePage(mcpTarget, callToolResult);
 
 				return {
 					content: [{ type: "text", text: outputStr }],
