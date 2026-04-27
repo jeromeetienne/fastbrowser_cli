@@ -6,65 +6,65 @@ import Path from "node:path";
 // npm imports
 import Puppeteer from 'puppeteer';
 import * as PdfToImg from "pdf-to-img";
-import { OpenAI } from "openai";
+// import { OpenAI } from "openai";
 
 
 export class UtilsPdf {
 
-	/**
-	 * Convert a PDF buffer to Markdown using an LLM.
-	 * 
-	 * @param openaiClient The OpenAI client instance.
-	 * @param pdfBuffer The PDF file as a Buffer.
-	 * @param param2 Optional parameters, including the model name.
-	 * @returns A promise that resolves to the generated Markdown string.
-	 */
-	static async pdf2MarkdownByLlm(openaiClient: OpenAI, pdfBuffer: Buffer, {
-		modelName = 'gpt-4o'
-	}: {
-		modelName?: string
-	} = {}): Promise<string> {
-		const imageBuffers = await UtilsPdf._pdf2images(pdfBuffer);
+	// /**
+	//  * Convert a PDF buffer to Markdown using an LLM.
+	//  * 
+	//  * @param openaiClient The OpenAI client instance.
+	//  * @param pdfBuffer The PDF file as a Buffer.
+	//  * @param param2 Optional parameters, including the model name.
+	//  * @returns A promise that resolves to the generated Markdown string.
+	//  */
+	// static async pdf2MarkdownByLlm(openaiClient: OpenAI, pdfBuffer: Buffer, {
+	// 	modelName = 'gpt-4o'
+	// }: {
+	// 	modelName?: string
+	// } = {}): Promise<string> {
+	// 	const imageBuffers = await UtilsPdf._pdf2images(pdfBuffer);
 
-		const response = await openaiClient.responses.parse({
-			model: modelName,
-			max_output_tokens: 4096,
-			input: [
-				{
-					role: "user",
-					content: [
-						...imageBuffers.map((imageBuffer) => ({
-							type: "input_image" as const,
-							image_url: `data:image/png;base64,${imageBuffer.toString('base64')}`,
-							detail: "auto" as const,
-						})),
-						{
-							type: "input_text" as const,
-							text: [
-								"Convert these PDF pages to well-structured markdown.",
-								"Preserve headings, lists, tables, and emphasis.",
-								"Output only the markdown content without any explanations and no codeblocks.",
-							].join("\n"),
-						},
-					],
-				},
-			],
-		});
+	// 	const response = await openaiClient.responses.parse({
+	// 		model: modelName,
+	// 		max_output_tokens: 4096,
+	// 		input: [
+	// 			{
+	// 				role: "user",
+	// 				content: [
+	// 					...imageBuffers.map((imageBuffer) => ({
+	// 						type: "input_image" as const,
+	// 						image_url: `data:image/png;base64,${imageBuffer.toString('base64')}`,
+	// 						detail: "auto" as const,
+	// 					})),
+	// 					{
+	// 						type: "input_text" as const,
+	// 						text: [
+	// 							"Convert these PDF pages to well-structured markdown.",
+	// 							"Preserve headings, lists, tables, and emphasis.",
+	// 							"Output only the markdown content without any explanations and no codeblocks.",
+	// 						].join("\n"),
+	// 					},
+	// 				],
+	// 			},
+	// 		],
+	// 	});
 
-		if (response.output_text === null) {
-			throw new Error("Failed to convert PDF to Markdown. The LLM did not return any content.");
-		}
-		const markdown = response.output_text;
+	// 	if (response.output_text === null) {
+	// 		throw new Error("Failed to convert PDF to Markdown. The LLM did not return any content.");
+	// 	}
+	// 	const markdown = response.output_text;
 
-		return markdown;
-	}
+	// 	return markdown;
+	// }
 
 	/**
 	 * Convert a PDF buffer to an array of image buffers, one for each page.
 	 * @param pdfBuffer The PDF file as a Buffer.
 	 * @returns A promise that resolves to an array of Buffers, each representing a page of the PDF as an image.
 	 */
-	private static async _pdf2images(pdfBuffer: Buffer): Promise<Buffer[]> {
+	static async pdf2images(pdfBuffer: Buffer): Promise<Buffer[]> {
 		// write the pdf buffer to a temporary file
 		const tempPdfPath = Path.resolve(Os.tmpdir(), `temp_resumeai_${Date.now()}.pdf`);
 		await Fs.promises.writeFile(tempPdfPath, pdfBuffer);

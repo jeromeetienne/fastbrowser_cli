@@ -3,15 +3,21 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-    "types": "module",
+    "type": "module",
     "scripts": {
+        "dev": "npx tsx ./src/cli.ts",
+        "typecheck": "tsc --noEmit -p tsconfig.build.json",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "type": "commonjs",
     "dependencies": {
+        "@ai-sdk/openai": "^3.0.53",
+        "ai": "^6.0.168",
+        "commander": "^14.0.3",
+        "pdf-to-img": "^6.0.0",
+        "puppeteer": "^24.42.0",
         "zod": "^3.25.76"
     },
     "devDependencies": {
