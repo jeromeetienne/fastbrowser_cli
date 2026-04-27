@@ -13,32 +13,32 @@ Scan the user's public GitHub repositories for recent activity and generate enga
 
 Default GitHub username is `jeromeetienne`. The user may override.
 
+Default lookback window is `7` days. The user may override (e.g. "last 14 days", "past month").
+
 ## Workflow
 
 ### Step 1: Fetch recently active repositories
 
-Get the 10 most recently pushed repositories:
+Get the 10 most recently pushed repositories (substitute the configured username for `<USERNAME>`):
 
 ```zsh
-gh repo list jeromeetienne --limit 100 --visibility public --json name,pushedAt --jq 'sort_by(.pushedAt) | reverse | .[:10]'
+gh repo list <USERNAME> --limit 100 --visibility public --json name,pushedAt --jq 'sort_by(.pushedAt) | reverse | .[:10]'
 ```
-
-Replace `jeromeetienne` with the user's GitHub username if different.
 
 ### Step 2: Fetch recent commits
 
-For each repo pushed within the last 7 days:
+For each repo pushed within the lookback window (default 7 days; substitute the configured value for `<DAYS>`):
 
 ```zsh
-gh api repos/jeromeetienne/<REPO_NAME>/commits \
+gh api repos/<USERNAME>/<REPO_NAME>/commits \
   --method GET \
-  -f since="$(date -u -v-7d +%Y-%m-%dT%H:%M:%SZ)" \
+  -f since="$(date -u -v-<DAYS>d +%Y-%m-%dT%H:%M:%SZ)" \
   -f per_page=100 \
   --paginate \
   --jq '.[] | "\(.sha[:7])  \(.commit.author.date)  \(.commit.author.name)  \(.commit.message | split("\n")[0])"'
 ```
 
-On Linux, replace `date -u -v-7d` with `date -u -d '7 days ago'`.
+On Linux, replace `date -u -v-<DAYS>d` with `date -u -d '<DAYS> days ago'`.
 
 ### Step 3: Analyze activity
 
@@ -83,6 +83,7 @@ Present each post in its own block, including:
 - **Engage**: ask questions, invite feedback, share learnings
 - **Vary tone**: mix technical detail with higher-level narratives across posts
 - **Thread potential**: flag when multiple commits could form a thread/story
+- **Include a link**: posts should almost always include a link (repo URL, release page, PR, or relevant doc) so readers can explore further — this drives clicks, stars, and discovery
 
 ## Post templates
 

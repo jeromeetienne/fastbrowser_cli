@@ -4,6 +4,10 @@ A Claude Code agent skill that turns your recent GitHub activity into ready-to-p
 
 This package is skill-only — it ships a [SKILL.md](skills/build-in-public/SKILL.md) and no CLI. The agent uses your local `gh` (GitHub CLI) to scan recent commits and releases, then drafts posts in an authentic developer voice.
 
+## Usage Example
+- *"Generate build-in-public linkedin posts for github user 'jeromeetienne'"*
+- *"Generate build-in-public posts for twitter/bluesky based on github activity of 'jeromeetienne' during the past 2 weeks"*
+
 ## What it does
 
 - Scans your 10 most recently pushed public repos via `gh`
