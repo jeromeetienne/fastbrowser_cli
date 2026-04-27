@@ -4,3 +4,5 @@ node_modules/
 # Build output
 dist/
 
+# Playwright test artifacts
+.playwright-mcp/
