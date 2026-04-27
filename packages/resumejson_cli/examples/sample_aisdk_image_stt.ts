@@ -1,9 +1,11 @@
-import { generateText, Output } from "ai";
-import { openai } from "@ai-sdk/openai";
+import * as AiSdk from "ai";
 import { z } from "zod";
-import { readFile } from "node:fs/promises";
 import Fs from "node:fs";
 import Path from "node:path";
+import * as AiSdkOpenAI from '@ai-sdk/openai';
+import KeyvSqlite from '@keyv/sqlite';
+import { Cacheable } from "cacheable";
+import OpenAICache from 'openai-cache';
 
 const imageAnalysisSchema = z.object({
 	description: z.string().describe("A concise description of the image"),
@@ -23,11 +25,25 @@ export type ImageAnalysis = z.infer<typeof imageAnalysisSchema>;
 ///////////////////////////////////////////////////////////////////////////////
 
 export async function analyzeImage(imagePath: string): Promise<ImageAnalysis> {
-	const image = await readFile(imagePath);
+	const image = await Fs.promises.readFile(imagePath);
+	// init OpenAI cache with sqlite backend (you can use any Keyv backend or even an in-memory cache)
+	const sqlitePath = `sqlite://${__dirname}/.openai_cache.sqlite`;
+	const sqliteCache = new Cacheable({ secondary: new KeyvSqlite(sqlitePath) });
+	const openaiCache = new OpenAICache(sqliteCache, {
+		markResponseEnabled: true, // enable marking cached responses with a special header
+	});
 
-	const result = await generateText({
-		model: openai("gpt-4.1"),
-		output: Output.object({ schema: imageAnalysisSchema }),
+	const openaiAiSdk = AiSdkOpenAI.createOpenAI({
+		apiKey: process.env.OPENAI_API_KEY,
+		fetch: openaiCache.getFetchFn(), // use the caching fetch function
+	});
+
+
+	const result = await AiSdk.generateText({
+		model: openaiAiSdk("gpt-4.1"),
+		output: AiSdk.Output.object({
+			schema: imageAnalysisSchema
+		}),
 		messages: [
 			{
 				role: "user",
