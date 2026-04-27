@@ -20,7 +20,7 @@ Default GitHub username is `jeromeetienne`. The user may override.
 Get the 10 most recently pushed repositories:
 
 ```zsh
-gh repo list jeromeetienne --limit 100 --json name,pushedAt --jq 'sort_by(.pushedAt) | reverse | .[:10]'
+gh repo list jeromeetienne --limit 100 --visibility public --json name,pushedAt --jq 'sort_by(.pushedAt) | reverse | .[:10]'
 ```
 
 Replace `jeromeetienne` with the user's GitHub username if different.
