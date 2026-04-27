@@ -1,6 +1,6 @@
 # skillmd_collection
 
-A monorepo of Claude Code agent skills and CLI tools. Each package ships a `SKILL.md` that AI agents can install and invoke, plus a standalone CLI for humans and shell workflows.
+A monorepo of SKILL.md and CLI tools. Each package ships a `SKILL.md` that AI agents can install and invoke, plus a standalone CLI for humans and shell workflows.
 
 ## Packages
 
