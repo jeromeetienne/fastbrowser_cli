@@ -1,0 +1,6 @@
+packages:
+  - 'packages/*'
+  # Exclude duplicate-named legacy/backup copies — their package.json#name
+  # collides with the canonical packages and pnpm requires unique names.
+  - '!packages/*_chromedevtools'
+  - '!packages/fastbrowser_cli copy'
