@@ -22,6 +22,7 @@ The accessibility tree — not the DOM, not screenshots — is the right substra
 - Where it comes from in practice:
   - Chrome DevTools — link to the Accessibility pane docs
   - Playwright / Puppeteer — link to their accessibility snapshot APIs
+  - Playwright [Accessibility Testing](https://playwright.dev/docs/accessibility-testing) — uses `@axe-core/playwright` to scan for WCAG issues; shows how the a11y tree is already a first-class testing surface in mainstream tooling.
   - Note: this is not something we invented; we're repurposing infrastructure that's been there for years.
 
 ### Why the DOM and Screenshots Both Fall Short
@@ -38,6 +39,7 @@ The accessibility tree — not the DOM, not screenshots — is the right substra
 ### A Selector Language Over the Tree
 - Why a *selector language* at all: agents need to point at things. Free-form "click the blue button on the right" is unreliable; a selector is a contract.
 - Why CSS-shaped: developers already know it, LLMs have seen millions of examples of it, tooling exists. Don't invent syntax when you don't have to.
+- Prior art worth citing: Playwright [Locators](https://playwright.dev/docs/locators) — `getByRole`, `getByLabel`, `getByText`, `getByAltText` are effectively a (non-CSS) selector API over the accessibility tree. Same intuition: select by role + accessible name, not by class soup. Our contribution is putting a *CSS-shaped* surface on top of the same idea so it composes the way developers already think.
 - What's different from real CSS: we select on `role`, `name`, and ARIA attributes — not tags, classes, or IDs. Show the same target two ways:
   - DOM/CSS: `div.header > nav > ul > li:nth-child(3) > a.nav-link--external`
   - a11y selector: `navigation link[href^="https"]`

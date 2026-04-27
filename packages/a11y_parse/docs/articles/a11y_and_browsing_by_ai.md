@@ -14,6 +14,8 @@ You can poke at it without writing any code:
 - **Playwright** exposes [`page.accessibility.snapshot()`](https://playwright.dev/docs/api/class-accessibility), which returns the tree as JSON.
 - **Puppeteer** has [the same API](https://pptr.dev/api/puppeteer.accessibility.snapshot).
 
+Playwright also treats the a11y tree as a first-class testing surface — its [accessibility testing guide](https://playwright.dev/docs/accessibility-testing) shows how to scan pages for WCAG violations with `@axe-core/playwright`. The point isn't that we need axe; it's that mainstream test tooling already builds on this substrate, so the infrastructure is mature.
+
 This is not new infrastructure. It's been shipping in browsers for a decade. We're just pointing it at a different consumer.
 
 ## Why the DOM and Screenshots Both Fall Short
@@ -49,6 +51,8 @@ So: agents emit selectors, the runtime resolves them against the current tree, a
 The boring one: developers already know CSS. Tooling and intuition transfer.
 
 The important one: LLMs have seen millions of CSS selectors in training data. They are fluent in the syntax. Inventing a new query language means burning a lot of in-context examples teaching the model something it already half-knows in a worse dialect. Don't.
+
+**Prior art.** Playwright's [Locators](https://playwright.dev/docs/locators) — `getByRole`, `getByLabel`, `getByText`, `getByAltText` — are effectively a (non-CSS) selector API over the accessibility tree. The intuition is the same: address elements by role and accessible name, not by class soup. The contribution here is putting a *CSS-shaped* surface on top of that intuition, so selectors compose (descendant, child, sibling, attribute matchers, unions) the way developers already think — and the way LLMs already write.
 
 **What's different from real CSS:** we select on `role`, `name`, and ARIA attributes — not tags, classes, or IDs. Same target, two ways:
 
@@ -140,7 +144,7 @@ For AI agents on the web, the substrate matters as much as the model. The access
 
 If you want to try this:
 
-- [`a11y_parse`](https://github.com/jeromeetienne/skillmd_collection/tree/main/packages/a11y_parse) — the parser and selector engine.
-- [`fastbrowser_cli`](https://github.com/jeromeetienne/skillmd_collection/tree/main/packages/fastbrowser_cli) — a SKILL.md that snapshots live pages into the format `a11y_parse` consumes.
+- [a11y_parse](https://github.com/jeromeetienne/skillmd_collection/tree/main/packages/a11y_parse) — the parser and selector engine.
+- [fastbrowser_cli](https://github.com/jeromeetienne/skillmd_collection/tree/main/packages/fastbrowser_cli) — a SKILL.md that snapshots live pages into the format `a11y_parse` consumes.
 
 Pipe one into the other and you have an agent loop that fits in a paragraph.
