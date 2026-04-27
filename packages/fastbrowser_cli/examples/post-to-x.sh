@@ -18,4 +18,7 @@ npx fastbrowser_cli fill_form -s 'dialog textbox' -v "$MESSAGE"
 # 4. Submit
 npx fastbrowser_cli click -s 'dialog button[name="Post"]'
 
+# 5. Close the page
+npx fastbrowser_cli close_page --page-id 0
+
 echo "posted: $MESSAGE"
