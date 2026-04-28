@@ -189,6 +189,35 @@ class MainHelper {
 		const resumeJson: ResumeJson = result.output;
 		return resumeJson;
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	//	
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	static async runInstall(skillFolder: string): Promise<void> {
+		const sourceSkillsDir = Path.resolve(import.meta.dirname, '../../skills');
+		const targetSkillsDir = Path.resolve(skillFolder, 'skills');
+		try {
+			const entries = await Fs.promises.readdir(sourceSkillsDir, { withFileTypes: true });
+			const skillDirs = entries.filter((entry) => entry.isDirectory() === true);
+			if (skillDirs.length === 0) {
+				console.error(`fastbrowser-cli error: no skills found in ${sourceSkillsDir}`);
+				process.exit(1);
+			}
+			for (const skillDir of skillDirs) {
+				const sourceDir = Path.join(sourceSkillsDir, skillDir.name);
+				const targetDir = Path.join(targetSkillsDir, skillDir.name);
+				await Fs.promises.cp(sourceDir, targetDir, { recursive: true });
+				console.log(`Installed ${skillDir.name} skill at ${targetDir}`);
+			}
+		} catch (err) {
+			const message = err instanceof Error ? err.message : String(err);
+			console.error(`fastbrowser-cli error: ${message}`);
+			process.exit(1);
+		}
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -204,6 +233,19 @@ async function main() {
 		.name('resumejson_cli')
 		.description('Command-line interface for resume JSON tooling.')
 		.version('1.0.0');
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	//	install
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	program
+		.command('install [skill-folder]')
+		.description('Install all bundled skills into <skill-folder>/skills/ (default: .)')
+		.action(async (skillFolder: string | undefined) => {
+			await MainHelper.runInstall(skillFolder ?? '.');
+		});
 
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////

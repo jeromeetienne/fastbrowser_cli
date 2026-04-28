@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import fs from 'node:fs';
-import path from 'node:path';
+import Fs from 'node:fs';
+import Path from 'node:path';
 
 import { Command, CommanderError, Option } from 'commander';
 import stringArgv from 'string-argv';
@@ -70,19 +70,19 @@ class MainHelper {
 	}
 
 	static async runInstall(skillFolder: string): Promise<void> {
-		const sourceSkillsDir = path.resolve(import.meta.dirname, '../../skills');
-		const targetSkillsDir = path.resolve(skillFolder, 'skills');
+		const sourceSkillsDir = Path.resolve(import.meta.dirname, '../../skills');
+		const targetSkillsDir = Path.resolve(skillFolder, 'skills');
 		try {
-			const entries = await fs.promises.readdir(sourceSkillsDir, { withFileTypes: true });
+			const entries = await Fs.promises.readdir(sourceSkillsDir, { withFileTypes: true });
 			const skillDirs = entries.filter((entry) => entry.isDirectory() === true);
 			if (skillDirs.length === 0) {
 				console.error(`fastbrowser-cli error: no skills found in ${sourceSkillsDir}`);
 				process.exit(1);
 			}
 			for (const skillDir of skillDirs) {
-				const sourceDir = path.join(sourceSkillsDir, skillDir.name);
-				const targetDir = path.join(targetSkillsDir, skillDir.name);
-				await fs.promises.cp(sourceDir, targetDir, { recursive: true });
+				const sourceDir = Path.join(sourceSkillsDir, skillDir.name);
+				const targetDir = Path.join(targetSkillsDir, skillDir.name);
+				await Fs.promises.cp(sourceDir, targetDir, { recursive: true });
 				console.log(`Installed ${skillDir.name} skill at ${targetDir}`);
 			}
 		} catch (err) {
@@ -97,7 +97,7 @@ class MainHelper {
 			return inlineScript;
 		}
 		if (file !== undefined && file !== '') {
-			return await fs.promises.readFile(file, 'utf-8');
+			return await Fs.promises.readFile(file, 'utf-8');
 		}
 		if (process.stdin.isTTY === true) {
 			throw new Error('batch: no input. Provide a file path, --script, or pipe commands on stdin.');
