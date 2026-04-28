@@ -7,6 +7,7 @@
     "scripts": {
         "dev": "npx tsx ./src/cli.ts",
         "dev:from_pdf": "npm run dev -- from_pdf -i ./data/samples/resume_webdev.resume.pdf -o ./outputs/resume_webdev.resume.json",
+        "dev:to_pdf:optimized": "npm run dev -- to_pdf -i ./outputs/resume_webdev.optimized.resume.json -o ./outputs/resume_webdev.optimized.resume.pdf",
         "dev:to_markdown:optimized": "npm run dev -- to_markdown -i ./outputs/resume_webdev.optimized.resume.json -o ./outputs/resume_webdev.output.resume.md",
         "dev:ats_score": "npm run dev -- ats_score -i ./outputs/resume_webdev.resume.json -o ./outputs/resume_webdev.ats_score.json",
         "dev:ats_review": "npm run dev -- ats_review -i ./outputs/resume_webdev.resume.json -o ./outputs/resume_webdev.ats_review.json",
@@ -27,6 +28,7 @@
         "@keyv/sqlite": "^4.0.8",
         "ai": "^6.0.168",
         "commander": "^14.0.3",
+        "mustache": "^4.2.0",
         "openai-cache": "^1.0.35",
         "pdf-to-img": "^6.0.0",
         "puppeteer": "^24.42.0",
@@ -34,6 +36,7 @@
         "zod": "^3.25.76"
     },
     "devDependencies": {
+        "@types/mustache": "^4.2.6",
         "@types/node": "^25.6.0"
     }
 }

@@ -1,4 +1,0 @@
-- use aisdk for AI
-- use npm commander for shell commands
-- json schemas from https://github.com/jsonresume/resume-schema/tree/master
-  - 

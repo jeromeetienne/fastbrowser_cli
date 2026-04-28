@@ -130,6 +130,23 @@ class MainHelper {
 		const resumeJson: ResumeJson = result.output;
 		return resumeJson;
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	//	toPdf
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	static async toPdf(resumeJson: ResumeJson): Promise<Buffer> {
+		// read the HTML mustache template
+		const htmlTemplatePath = Path.resolve(PROJECT_ROOT, 'assets/resumejson_template.mustache.html');
+		const htmlMustachTemplate = await Fs.promises.readFile(htmlTemplatePath, 'utf8');
+
+		const resumeHtml: string = await ResumeMarkdown.toHtml(resumeJson, htmlMustachTemplate);
+		const pdfBuffer: Buffer = await UtilsPdf.html2pdf(resumeHtml);
+
+		return pdfBuffer;
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -167,6 +184,21 @@ async function main() {
 
 			const resumeJsonPrettyStr = await ResumePrettyPrint.prettyPrint(resumeJson);
 			console.log(resumeJsonPrettyStr);
+		});
+
+	program
+		.command('to_pdf')
+		.description('Convert a resume JSON file to a PDF file')
+		.requiredOption('-i, --inputResumeJson <path>', 'path to the input resume JSON file')
+		.requiredOption('-o, --outputResumePdf <path>', 'path to write the output PDF file')
+		.action(async (options: { inputResumeJson: string; outputResumePdf: string }) => {
+			const resumeJsonStr = await MainHelper.readInputString(options.inputResumeJson);
+			const resumeJson: ResumeJson = ResumeJsonSchema.parse(JSON.parse(resumeJsonStr));
+
+			const pdfBuffer: Buffer = await MainHelper.toPdf(resumeJson);
+
+			await MainHelper.writeOutputBuffer(options.outputResumePdf, pdfBuffer);
+			console.log(`PDF written to ${options.outputResumePdf}`);
 		});
 
 	program

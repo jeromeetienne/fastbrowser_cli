@@ -31,9 +31,9 @@ export class AtsOptimizer {
 			modelName?: string
 		} = {}
 	): Promise<ResumeJson> {
-		// Construct the user prompt by combining the template, original resume, and ATS review
+		// Construct the user prompt by combining the original resume and ATS review
 		const userPrompt = [
-			`## Original Resume`,
+			`## Original Resume JSON`,
 			`${JSON.stringify(resumeJson)}`,
 			``,
 			`## ATS Review`,
@@ -52,7 +52,7 @@ export class AtsOptimizer {
 			}
 		]
 
-		// Prompt the AI SDK to generate the optimized resume markdown
+		// Prompt the AI SDK to generate the optimized ResumeJson
 		const response = await AiSdk.generateText({
 			model: aiSdkProvider(modelName),
 			output: AiSdk.Output.object({
@@ -61,7 +61,7 @@ export class AtsOptimizer {
 			messages: modelMessages,
 		});
 
-		// return optimized resume in ResumeMd format
+		// return optimized resume as ResumeJson
 		const resumeOptimizedJson: ResumeJson = response.output;
 		return resumeOptimizedJson;
 	}
@@ -71,27 +71,31 @@ export class AtsOptimizer {
 
 const SYSTEM_PROMPT = `You are an ATS (Applicant Tracking System) resume optimizer.
 
-You receive three inputs:
-1. "resumeMdTemplate" — the authoritative ResumeMd template that defines the exact structure your output MUST follow
-2. "resumeJson" — the original resume as a JSON object, to be optimized
-3. "atsReview" — an ATS compliance review with specific actions to apply
+You receive two inputs:
+1. "Original Resume JSON" — the original resume as a ResumeJson object (JSON Resume schema), to be optimized
+2. "ATS Review" — an ATS compliance review with specific actions to apply
 
-Your job is to return an OPTIMIZED version of the resume that applies the actions from the review.
-The output MUST be a ResumeMd markdown document that follows the exact structure and formatting of the resumeMdTemplate.
+Your job is to return an OPTIMIZED ResumeJson object that applies the actions from the review.
+The output MUST conform exactly to the ResumeJson schema (JSON Resume).
 
 RULES:
-FOLLOW THE TEMPLATE:
-- The resumeMdTemplate defines the heading hierarchy, section order, and metadata format (e.g., "- Company: {value}", "- Start date: {value}")
-- Your output MUST use the same headings, the same metadata field names, and the same nesting as the template
-- Use the template's sections: "Contact Information", "Professional Summary", "Work Experience", "Skills", "Education", "Certifications", "Projects"
-- Each Work Experience entry must use the template's format: "### {Job Title}" followed by "- Company:", "- Start date:", "- End date:", "- Location:", then "#### Key Achievements" with bullet points
-- The Skills section must use the template's categories: "Languages", "Frameworks", "Infrastructure", "Data", "Practices"
+FOLLOW THE RESUMEJSON SCHEMA:
+- The output is a single JSON object with these top-level fields: "$schema", "basics", "work", "volunteer", "education", "awards", "certificates", "publications", "skills", "languages", "interests", "references", "projects", "meta"
+- "basics" holds personal info: "name", "label", "image", "email", "phone", "url", "summary", "location" (object: "address", "postalCode", "city", "countryCode", "region"), "profiles" (array of { "network", "username", "url" })
+- Each "work" entry uses: "name" (company), "location", "description", "position" (job title), "url", "startDate", "endDate", "summary", "highlights" (array of accomplishment strings)
+- Each "education" entry uses: "institution", "url", "area", "studyType", "startDate", "endDate", "score", "courses"
+- Each "skills" entry uses: "name", "level", "keywords"
+- Each "projects" entry uses: "name", "description", "highlights", "keywords", "startDate", "endDate", "url", "roles", "entity", "type"
+- Each "certificates" entry uses: "name", "date", "url", "issuer"
+- Use the same field names, nesting, and data types as the input ResumeJson — do not rename fields, do not invent fields
+- Preserve every top-level field that exists in the input; set fields you cannot fill to null (or [] for arrays) rather than omitting them
+- All dates MUST be ISO-8601 strings (e.g. "2023-04-15", "2023-04", or "2023")
 
 PRESERVE ACCURACY:
 - Never fabricate experience, skills, companies, dates, or credentials
 - Never add technologies or tools the person hasn't mentioned
 - Keep all factual information (dates, company names, job titles, degrees) intact
-- You may rephrase and restructure, but not invent
+- You may rephrase and restructure string values, but not invent new entries
 
 APPLY THE REVIEW'S ACTIONS:
 - Address every action in the ATS review, prioritizing high-priority ones
@@ -100,13 +104,13 @@ APPLY THE REVIEW'S ACTIONS:
 - For each action, follow the suggested fix as closely as possible
 
 ATS OPTIMIZATION:
-- Ensure contact info is in metadata fields, not embedded in text
+- Ensure contact info lives in the proper "basics" fields ("email", "phone", "url", "location", "profiles"), not embedded in summary or highlight text
 - Expand acronyms on first use: "Amazon Web Services (AWS)"
-- Start bullets with strong action verbs
+- Start each "highlights" bullet with a strong action verb
 - Add quantifiable metrics where the original content implies them
 - Remove vague language ("responsible for", "helped with", "various")
-- Ensure dates are in consistent, parseable formats
+- Ensure "startDate" / "endDate" values are in consistent ISO-8601 format
 
 OUTPUT:
-- Return ONLY the optimized ResumeMd markdown, no explanations, no commentary, no code blocks
-- The output must conform exactly to the structure defined in resumeMdTemplate`;
+- Return ONLY the optimized ResumeJson object, no explanations, no commentary, no code fences
+- The output must validate against the ResumeJson schema`;
