@@ -1,8 +1,11 @@
 {
     "name": "resumejson_cli",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "version": "1.0.2",
+    "description": "A CLI tool to convert resumes between PDF, JSON, and Markdown formats, and to optimize resumes for ATS (Applicant Tracking Systems) using AI.",
+    "main": "dist/cli.js",
+    "bin": {
+        "resumejson_cli": "./dist/cli.js"
+    },
     "type": "module",
     "scripts": {
         "dev": "npx tsx ./src/cli.ts",
@@ -20,6 +23,7 @@
         "full_pipeline": "npm run dev:from_pdf && npm run dev:ats_score && npm run dev:ats_question && npm run dev:ats_answering && npm run dev:ats_answered && npm run dev:ats_review:answered && npm run dev:ats_optimize:answered && npm run dev:to_pdf:optimized && npm run dev:to_markdown:optimized && npm run dev:from_markdown:optimized",
         "clean:outputs": "rm -f ./outputs/*.json",
         "build": "tsc -p tsconfig.build.json",
+        "publish:all": "npm run build && npm version patch && npm publish --access public",
         "typecheck": "tsc --noEmit -p tsconfig.build.json",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
