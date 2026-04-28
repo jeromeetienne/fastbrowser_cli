@@ -6,6 +6,7 @@ import * as AiSdkOpenAI from '@ai-sdk/openai';
 // local imports
 import { AtsQuestionSchema } from './ats_question_schema.js';
 import type { AtsQuestion } from './ats_question_type.js';
+import { ResumeJson } from "../types/resume_types.js";
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -16,7 +17,7 @@ import type { AtsQuestion } from './ats_question_type.js';
 export class AtsQuestioner {
 	static async evaluate(
 		aiSdkProvider: AiSdkOpenAI.OpenAIProvider,
-		resumeMd: string,
+		resumeJson: ResumeJson,
 		{
 			modelName = process.env.OPENAI_MODEL ?? "gpt-4.1-nano",
 		}: {
@@ -31,7 +32,7 @@ export class AtsQuestioner {
 			},
 			{
 				role: 'user',
-				content: resumeMd,
+				content: JSON.stringify(resumeJson),
 			}
 		]
 
@@ -58,11 +59,11 @@ export class AtsQuestioner {
 	/**
 	 * - use `Chalk` to pretty-print the ATS questions in the terminal with colors and formatting for better readability.
 	 *
-	 * @param atsQuestions
+	 * @param atsQuestion
 	 */
-	static async prettyPrint(atsQuestions: AtsQuestion): Promise<string> {
+	static async prettyPrint(atsQuestion: AtsQuestion): Promise<string> {
 		const lines: string[] = [];
-		lines.push(Chalk.bold.underline(`ATS Resume Gap Questions (${atsQuestions.questions.length}):`));
+		lines.push(Chalk.bold.underline(`ATS Resume Gap Questions (${atsQuestion.questions.length}):`));
 		lines.push("");
 		const priorityColor = (priority: string) => {
 			switch (priority) {
@@ -76,8 +77,8 @@ export class AtsQuestioner {
 					return Chalk.white;
 			}
 		};
-		for (const question of atsQuestions.questions) {
-			const questionIndex = atsQuestions.questions.indexOf(question) + 1;
+		for (const question of atsQuestion.questions) {
+			const questionIndex = atsQuestion.questions.indexOf(question) + 1;
 			const color = priorityColor(question.priority);
 			lines.push(color(`    ${questionIndex}. [${question.priority.toUpperCase()}] (${question.category}) ${question.question}`));
 			lines.push(color(`       Context: ${question.context}`));

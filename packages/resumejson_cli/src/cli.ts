@@ -15,6 +15,9 @@ import { ResumeJson } from './types/resume_types.js';
 import { AtsScorer as AtsScorer } from './ats/ats_scorer.js';
 import { AtsReviewer } from './ats/ats_reviewer.js';
 import { AtsQuestioner } from './ats/ats_questioner.js';
+import { AtsAnswering } from './ats/ats_answering.js';
+import { AtsQuestion } from './ats/ats_question_type.js';
+import { AtsQuestionSchema } from './ats/ats_question_schema.js';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const PROJECT_ROOT = Path.resolve(__dirname, '..');
@@ -204,7 +207,7 @@ async function main() {
 			const resumeJsonStr = await MainHelper.readInputString(options.inputResumeJson);
 			const resumeJson: ResumeJson = ResumeJsonSchema.parse(JSON.parse(resumeJsonStr));
 
-			const atsQuestions = await AtsQuestioner.evaluate(aiSdkProvider, resumeJsonStr);
+			const atsQuestions = await AtsQuestioner.evaluate(aiSdkProvider, resumeJson);
 
 			const atsQuestionsStr = JSON.stringify(atsQuestions, null, '\t');
 			await MainHelper.writeOutputString(options.outputAtsQuestions, atsQuestionsStr);
@@ -212,6 +215,55 @@ async function main() {
 			const atsQuestionsPrettyStr = await AtsQuestioner.prettyPrint(atsQuestions);
 			console.log(atsQuestionsPrettyStr);
 		});
+
+	program
+		.command('ats_answered')
+		.description('Integrate ATS questions with answers to produce an improved resume JSON')
+		.requiredOption('-i, --inputResumeJson <path>', 'path to the input resume JSON file')
+		.requiredOption('-q, --inputAtsQuestion <path>', 'path to the input ATS questions JSON file')
+		.requiredOption('-o, --outputResumeJson <path>', 'path to write the improved resume JSON output')
+		.action(async (options: { inputResumeJson: string; inputAtsQuestion: string; outputResumeJson: string }) => {
+			const aiSdkProvider = await UtilsAisdk.openaiAiSdk()
+
+			const resumeJsonStr = await MainHelper.readInputString(options.inputResumeJson);
+			const resumeJson: ResumeJson = ResumeJsonSchema.parse(JSON.parse(resumeJsonStr));
+
+			const atsQuestionStr = await MainHelper.readInputString(options.inputAtsQuestion);
+			const atsQuestion: AtsQuestion = AtsQuestionSchema.parse(JSON.parse(atsQuestionStr))
+
+			const atsQuestionAnswered = await AtsAnswering.evaluate(aiSdkProvider, resumeJson, atsQuestion);
+
+			const atsQuestionAnsweredStr = JSON.stringify(atsQuestionAnswered, null, '\t');
+			await MainHelper.writeOutputString(options.outputResumeJson, atsQuestionAnsweredStr);
+
+			const atsQuestionAnsweredPrettyStr = await AtsQuestioner.prettyPrint(atsQuestionAnswered);
+			console.log(atsQuestionAnsweredPrettyStr);
+		});
+
+	program
+		.command('ats_answering')
+		.description('Produce answers via AI to ATS questions based on the resume JSON')
+		.requiredOption('-i, --inputResumeJson <path>', 'path to the input resume JSON file')
+		.requiredOption('-q, --inputAtsQuestion <path>', 'path to the input ATS questions JSON file')
+		.requiredOption('-o, --outputAtsQuestionsAnswered <path>', 'path to write the answered ATS questions JSON output')
+		.action(async (options: { inputResumeJson: string; inputAtsQuestion: string; outputAtsQuestionsAnswered: string }) => {
+			const aiSdkProvider = await UtilsAisdk.openaiAiSdk()
+
+			const resumeJsonStr = await MainHelper.readInputString(options.inputResumeJson);
+			const resumeJson: ResumeJson = ResumeJsonSchema.parse(JSON.parse(resumeJsonStr));
+
+			const atsQuestionStr = await MainHelper.readInputString(options.inputAtsQuestion);
+			const atsQuestion: AtsQuestion = AtsQuestionSchema.parse(JSON.parse(atsQuestionStr))
+
+			const atsQuestionAnswered = await AtsAnswering.evaluate(aiSdkProvider, resumeJson, atsQuestion);
+
+			const atsQuestionAnsweredStr = JSON.stringify(atsQuestionAnswered, null, '\t');
+			await MainHelper.writeOutputString(options.outputAtsQuestionsAnswered, atsQuestionAnsweredStr);
+
+			const atsQuestionAnsweredPrettyStr = await AtsQuestioner.prettyPrint(atsQuestionAnswered);
+			console.log(atsQuestionAnsweredPrettyStr);
+		});
+
 
 	program.parse(process.argv);
 }
