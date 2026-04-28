@@ -7,17 +7,62 @@ import * as Commander from 'commander';
 import { UtilsPdf } from './utils/utils_pdf.js';
 import { UtilsAisdk } from './utils/utils_aisdk.js';
 import * as AiSdk from 'ai';
-import { z } from 'zod';
 import KeyvSqlite from '@keyv/sqlite';
 import { Cacheable } from "cacheable";
 import { UtilsMemoisation } from './utils/utils_memoisation.js';
 import { ResumeJsonSchema } from './types/resume_schemas.js';
 import { ResumeJson } from './types/resume_types.js';
+import { AtsScorer as AtsScorer } from './ats/ats_scorer.js';
+import { AtsReviewer } from './ats/ats_reviewer.js';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const PROJECT_ROOT = Path.resolve(__dirname, '..');
 
 class MainHelper {
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	//	io helpers
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	static async readInputBuffer(path: string): Promise<Buffer> {
+		if (path === '-') {
+			const chunks: Buffer[] = [];
+			for await (const chunk of process.stdin) {
+				chunks.push(chunk as Buffer);
+			}
+			return Buffer.concat(chunks);
+		}
+		return await Fs.promises.readFile(path);
+	}
+
+	static async readInputString(path: string): Promise<string> {
+		const buffer = await MainHelper.readInputBuffer(path);
+		return buffer.toString('utf8');
+	}
+
+	static async writeOutputBuffer(path: string, data: Buffer): Promise<void> {
+		if (path === '-') {
+			process.stdout.write(data);
+			return;
+		}
+		await Fs.promises.writeFile(path, data);
+	}
+
+	static async writeOutputString(path: string, data: string): Promise<void> {
+		if (path === '-') {
+			process.stdout.write(data);
+			return;
+		}
+		await Fs.promises.writeFile(path, data, 'utf8');
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	//	fromPdf
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
 	static async pdf2images(pdfBuffer: Buffer): Promise<Buffer[]> {
 		if (false) {
 			const imageBuffers = await UtilsPdf.pdf2images(pdfBuffer);
@@ -37,30 +82,44 @@ class MainHelper {
 		return imageBuffers;
 	}
 
-	static async fromPdf(inputPath: string): Promise<ResumeJson> {
-		const pdfBuffer = await Fs.promises.readFile(inputPath);
+	static async fromPdf(pdfBuffer: Buffer): Promise<ResumeJson> {
 		const imageBuffers = await MainHelper.pdf2images(pdfBuffer);
 
+		// Build the user content array with the initial instruction and the images
+		const userContent: AiSdk.UserContent = [
+			{
+				type: 'text',
+				text: [
+					'Analyze this image and extract resume information in JSON format according to the ResumeJsonSchema.',
+					'Only output the JSON, no explanations.',
+				].join('\n'),
+			}
+		]
+		for (const imageBuffer of imageBuffers) {
+			userContent.push({
+				type: 'image',
+				image: imageBuffer,
+			})
+		}
+
+		// Prompt the AI SDK to generate the resume JSON
+		const modelName = 'gpt-4.1';
 		const openaiAiSdk = await UtilsAisdk.openaiAiSdk();
 		const result = await AiSdk.generateText({
-			model: openaiAiSdk('gpt-4.1'),
+			model: openaiAiSdk(modelName),
 			output: AiSdk.Output.object({
 				schema: ResumeJsonSchema,
 			}),
 			messages: [
 				{
 					role: 'user',
-					content: [
-						{ type: 'text', text: 'Analyze this image.' },
-						{
-							type: 'image',
-							image: imageBuffers[0],
-						},
-					],
+					content: userContent,
 				},
 			],
 		});
-		const resumeJson = result.output;
+
+		// return ResumeJson
+		const resumeJson: ResumeJson = result.output;
 		return resumeJson;
 	}
 }
@@ -82,12 +141,56 @@ async function main() {
 	program
 		.command('from_pdf')
 		.description('Extract resume JSON from a PDF file')
-		.argument('<inputPdfPath>', 'path to the input PDF file')
-		.action(async (inputPdfPath: string) => {
-			const resumeJson = await MainHelper.fromPdf(inputPdfPath);
-			console.log(JSON.stringify(resumeJson));
+		.requiredOption('-i, --inputResumePdf <path>', 'path to the input PDF file')
+		.requiredOption('-o, --outputResumeJson <path>', 'path to write the resume JSON output')
+		.action(async (options: { inputResumePdf: string; outputResumeJson: string }) => {
+			const pdfBuffer = await MainHelper.readInputBuffer(options.inputResumePdf);
+
+			const resumeJson = await MainHelper.fromPdf(pdfBuffer);
+			const resumeJsonStr = JSON.stringify(resumeJson, null, '\t');
+
+			await MainHelper.writeOutputString(options.outputResumeJson, resumeJsonStr);
 		});
 
+	program
+		.command('ats_score')
+		.description('Evaluate the ATS readiness of a resume JSON')
+		.requiredOption('-i, --inputResumeJson <path>', 'path to the input resume JSON file')
+		.requiredOption('-o, --outputAtsScore <path>', 'path to write the ATS score output')
+		.action(async (options: { inputResumeJson: string; outputAtsScore: string }) => {
+			const aiSdkProvider = await UtilsAisdk.openaiAiSdk()
+
+			const resumeJsonStr = await MainHelper.readInputString(options.inputResumeJson);
+			const resumeJson: ResumeJson = ResumeJsonSchema.parse(JSON.parse(resumeJsonStr));
+
+			const atsScore = await AtsScorer.evaluate(aiSdkProvider, resumeJson);
+
+			const atsScoreStr = JSON.stringify(atsScore, null, '\t');
+			await MainHelper.writeOutputString(options.outputAtsScore, atsScoreStr);
+
+			const atsScorePrettyStr = await AtsScorer.prettyPrint(atsScore);
+			console.log(atsScorePrettyStr);
+		});
+
+	program
+		.command('ats_review')
+		.description('Generate an ATS review for a resume JSON')
+		.requiredOption('-i, --inputResumeJson <path>', 'path to the input resume JSON file')
+		.requiredOption('-o, --outputAtsReview <path>', 'path to write the ATS review output')
+		.action(async (options: { inputResumeJson: string; outputAtsReview: string }) => {
+			const aiSdkProvider = await UtilsAisdk.openaiAiSdk()
+
+			const resumeJsonStr = await MainHelper.readInputString(options.inputResumeJson);
+			const resumeJson: ResumeJson = ResumeJsonSchema.parse(JSON.parse(resumeJsonStr));
+
+			const atsReview = await AtsReviewer.evaluate(aiSdkProvider, resumeJson);
+
+			const atsReviewStr = JSON.stringify(atsReview, null, '\t');
+			await MainHelper.writeOutputString(options.outputAtsReview, atsReviewStr);
+
+			const atsReviewPrettyStr = await AtsReviewer.prettyPrint(atsReview);
+			console.log(atsReviewPrettyStr);
+		});
 
 
 	program.parse(process.argv);

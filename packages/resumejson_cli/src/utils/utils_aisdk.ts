@@ -11,7 +11,7 @@ const __dirname = new URL('.', import.meta.url).pathname;
 const PROJECT_ROOT = Path.resolve(__dirname, '../..');
 
 export class UtilsAisdk {
-	static async openaiAiSdk() {
+	static async openaiAiSdk(): Promise<AiSdkOpenAI.OpenAIProvider> {
 		// init OpenAI cache with sqlite backend (you can use any Keyv backend or even an in-memory cache)
 		const sqlitePath = Path.resolve(PROJECT_ROOT, '.openai_cache.sqlite');
 		const sqliteUrl = `sqlite://${sqlitePath}`;

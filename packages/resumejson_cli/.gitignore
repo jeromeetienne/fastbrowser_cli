@@ -1,0 +1,8 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# OpenAI cache
+.openai_cache.sqlite
