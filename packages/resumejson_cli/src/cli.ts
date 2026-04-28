@@ -10,14 +10,15 @@ import * as AiSdk from 'ai';
 import KeyvSqlite from '@keyv/sqlite';
 import { Cacheable } from "cacheable";
 import { UtilsMemoisation } from './utils/utils_memoisation.js';
-import { ResumeJsonSchema } from './types/resume_schemas.js';
-import { ResumeJson } from './types/resume_types.js';
+import { ResumeJsonSchema } from './resume_json/resume_schemas.js';
+import { ResumeJson } from './resume_json/resume_types.js';
 import { AtsScorer as AtsScorer } from './ats/ats_scorer.js';
 import { AtsReviewer } from './ats/ats_reviewer.js';
 import { AtsQuestioner } from './ats/ats_questioner.js';
 import { AtsAnswering } from './ats/ats_answering.js';
 import { AtsQuestion } from './ats/ats_question_type.js';
 import { AtsQuestionSchema } from './ats/ats_question_schema.js';
+import { ResumeHelper } from './resume_json/resume_helper.js';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const PROJECT_ROOT = Path.resolve(__dirname, '..');
@@ -154,6 +155,9 @@ async function main() {
 			const resumeJsonStr = JSON.stringify(resumeJson, null, '\t');
 
 			await MainHelper.writeOutputString(options.outputResumeJson, resumeJsonStr);
+
+			const resumeJsonPrettyStr = await ResumeHelper.prettyPrint(resumeJson);
+			console.log(resumeJsonPrettyStr);
 		});
 
 	program
@@ -220,7 +224,7 @@ async function main() {
 		.command('ats_answered')
 		.description('Integrate ATS questions with answers to produce an improved resume JSON')
 		.requiredOption('-i, --inputResumeJson <path>', 'path to the input resume JSON file')
-		.requiredOption('-q, --inputAtsQuestion <path>', 'path to the input ATS questions JSON file')
+		.requiredOption('-q, --inputAtsQuestion <path>', 'path to the input ATS answered questions JSON file')
 		.requiredOption('-o, --outputResumeJson <path>', 'path to write the improved resume JSON output')
 		.action(async (options: { inputResumeJson: string; inputAtsQuestion: string; outputResumeJson: string }) => {
 			const aiSdkProvider = await UtilsAisdk.openaiAiSdk()
@@ -231,12 +235,12 @@ async function main() {
 			const atsQuestionStr = await MainHelper.readInputString(options.inputAtsQuestion);
 			const atsQuestion: AtsQuestion = AtsQuestionSchema.parse(JSON.parse(atsQuestionStr))
 
-			const atsQuestionAnswered = await AtsAnswering.evaluate(aiSdkProvider, resumeJson, atsQuestion);
+			const resumeAnsweredJson = await AtsAnswering.evaluate(aiSdkProvider, resumeJson, atsQuestion);
 
-			const atsQuestionAnsweredStr = JSON.stringify(atsQuestionAnswered, null, '\t');
-			await MainHelper.writeOutputString(options.outputResumeJson, atsQuestionAnsweredStr);
+			const resumeAnsweredStr = JSON.stringify(resumeAnsweredJson, null, '\t');
+			await MainHelper.writeOutputString(options.outputResumeJson, resumeAnsweredStr);
 
-			const atsQuestionAnsweredPrettyStr = await AtsQuestioner.prettyPrint(atsQuestionAnswered);
+			const atsQuestionAnsweredPrettyStr = await AtsQuestioner.prettyPrint(resumeAnsweredJson);
 			console.log(atsQuestionAnsweredPrettyStr);
 		});
 

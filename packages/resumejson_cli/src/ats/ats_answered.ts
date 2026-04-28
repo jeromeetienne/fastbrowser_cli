@@ -8,7 +8,8 @@ import * as AiSdkOpenAI from '@ai-sdk/openai';
 
 // local imports
 import type { AtsQuestion } from './ats_question_type.js';
-import { ResumeJson } from '../types/resume_types.js';
+import { ResumeJson } from '../resume_json/resume_types.js';
+import { ResumeJsonSchema } from '../resume_json/resume_schemas.js';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const PROJECT_ROOT = Path.resolve(__dirname, '../..');
@@ -29,7 +30,7 @@ export class AtsAnswered {
 		}: {
 			modelName?: string
 		} = {}
-	): Promise<string> {
+	): Promise<ResumeJson> {
 		// Construct the user prompt by combining the original resume and the answered questions
 		const userPrompt = [
 			`## Original Resume`,
@@ -54,12 +55,15 @@ export class AtsAnswered {
 		// Prompt the AI SDK to generate the revised resume markdown
 		const response = await AiSdk.generateText({
 			model: aiSdkProvider(modelName),
+			output: AiSdk.Output.object({
+				schema: ResumeJsonSchema,
+			}),
 			messages: modelMessages,
 		});
 
 		// return revised resume in ResumeMd format
-		const resumeMdCorrected: string = response.text;
-		return resumeMdCorrected;
+		const resumeAnsweredJson: ResumeJson = response.output;
+		return resumeAnsweredJson;
 	}
 }
 

@@ -5,7 +5,7 @@ import * as AiSdkOpenAI from '@ai-sdk/openai';
 // local imports
 import { AtsQuestionSchema } from './ats_question_schema.js';
 import type { AtsQuestion } from './ats_question_type.js';
-import { ResumeJson } from '../types/resume_types.js';
+import { ResumeJson } from '../resume_json/resume_types.js';
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

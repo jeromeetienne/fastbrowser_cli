@@ -6,7 +6,7 @@ import * as AiSdkOpenAI from '@ai-sdk/openai';
 // local imports
 import { AtsReviewSchema } from './ats_review_schema.js';
 import type { AtsReview } from './ats_review_type.js';
-import { ResumeJson } from "../types/resume_types.js";
+import { ResumeJson } from "../resume_json/resume_types.js";
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
