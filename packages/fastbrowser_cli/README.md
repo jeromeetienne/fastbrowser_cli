@@ -184,6 +184,13 @@ npm run inspect:fastbrowser_mcp # open the MCP inspector against fastbrowser_mcp
 
 `fastbrowser_cli` depends on the in-repo workspace package `a11y_parse`. Always publish through **pnpm** (not npm) — `pnpm publish` rewrites the `workspace:^` dep into a real version range in the tarball; `npm publish` cannot.
 
+`pnpm run publish:all` runs the full flow in one command:
+
+1. `prepublish:check` — fails fast if the working tree is dirty
+2. `build` — `tsc -p tsconfig.build.json`
+3. `version:bump` — `npm version patch --no-git-tag-version`, then commits the new `package.json` with message `feat: bump version to X.Y.Z in fastbrowser_cli package.json`
+4. `pnpm publish --access public`
+
 Order matters when both packages have changed: publish `a11y_parse` first so the version baked into `fastbrowser_cli`'s tarball already exists on the registry.
 
 ```bash
@@ -195,8 +202,8 @@ pnpm run publish:all
 cd ../fastbrowser_cli
 pnpm run publish:all
 
-# 3. Push the version-bump commits and tags
-git push --follow-tags
+# 3. Push the version-bump commits
+git push
 ```
 
 Full workflow, gotchas, and the version-rewriting cheatsheet live in [docs/publishing_workflow.md](docs/publishing_workflow.md).
