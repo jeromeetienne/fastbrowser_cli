@@ -31,9 +31,6 @@ export class AtsOptimizer {
 			modelName?: string
 		} = {}
 	): Promise<ResumeJson> {
-		const filePath = Path.join(PROJECT_ROOT, `./assets/resumemd_template.md`);
-		const resumeMdTemplate = await Fs.promises.readFile(filePath, 'utf-8');
-
 		// Construct the user prompt by combining the template, original resume, and ATS review
 		const userPrompt = [
 			`## Original Resume`,

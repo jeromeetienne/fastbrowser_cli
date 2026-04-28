@@ -18,9 +18,10 @@ import { AtsQuestioner } from './ats/ats_questioner.js';
 import { AtsAnswering } from './ats/ats_answering.js';
 import { AtsQuestion } from './ats/ats_question_type.js';
 import { AtsQuestionSchema } from './ats/ats_question_schema.js';
-import { ResumeHelper } from './resume_json/resume_helper.js';
+import { ResumePrettyPrint } from './resume_json/resume_pretty_print.js';
 import { AtsAnswered } from './ats/ats_answered.js';
 import { AtsOptimizer } from './ats/ats_optimizer.js';
+import { ResumeMarkdown } from './resume_json/resume_markdown.js';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const PROJECT_ROOT = Path.resolve(__dirname, '..');
@@ -70,7 +71,7 @@ class MainHelper {
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 
-	static async pdf2images(pdfBuffer: Buffer): Promise<Buffer[]> {
+	private static async pdf2images(pdfBuffer: Buffer): Promise<Buffer[]> {
 		if (false) {
 			const imageBuffers = await UtilsPdf.pdf2images(pdfBuffer);
 			return imageBuffers;
@@ -164,9 +165,30 @@ async function main() {
 
 			await MainHelper.writeOutputString(options.outputResumeJson, resumeJsonStr);
 
-			const resumeJsonPrettyStr = await ResumeHelper.prettyPrint(resumeJson);
+			const resumeJsonPrettyStr = await ResumePrettyPrint.prettyPrint(resumeJson);
 			console.log(resumeJsonPrettyStr);
 		});
+
+	program
+		.command('to_markdown')
+		.description('Convert a resume JSON file to a markdown file')
+		.requiredOption('-i, --inputResumeJson <path>', 'path to the input resume JSON file')
+		.requiredOption('-o, --outputResumeMarkdown <path>', 'path to write the output markdown file')
+		.action(async (options: { inputResumeJson: string; outputResumeMarkdown: string }) => {
+			const resumeJsonStr = await MainHelper.readInputString(options.inputResumeJson);
+			const resumeJson: ResumeJson = ResumeJsonSchema.parse(JSON.parse(resumeJsonStr));
+
+			const resumeMd: string = await ResumeMarkdown.toMarkdown(resumeJson);
+
+			await MainHelper.writeOutputString(options.outputResumeMarkdown, resumeMd);
+			console.log(resumeMd);
+		});
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	//	
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
 
 	program
 		.command('ats_score')
@@ -248,7 +270,7 @@ async function main() {
 			const resumeAnsweredStr = JSON.stringify(resumeAnsweredJson, null, '\t');
 			await MainHelper.writeOutputString(options.outputResumeJson, resumeAnsweredStr);
 
-			const resumeAnsweredPrettyStr = await ResumeHelper.prettyPrint(resumeAnsweredJson);
+			const resumeAnsweredPrettyStr = await ResumePrettyPrint.prettyPrint(resumeAnsweredJson);
 			console.log(resumeAnsweredPrettyStr);
 		});
 
@@ -296,9 +318,11 @@ async function main() {
 			const resumeOptimizedStr = JSON.stringify(resumeOptimizedJson, null, '\t');
 			await MainHelper.writeOutputString(options.outputResumeJson, resumeOptimizedStr);
 
-			const resumeOptimizedPrettyStr = await ResumeHelper.prettyPrint(resumeOptimizedJson);
+			const resumeOptimizedPrettyStr = await ResumePrettyPrint.prettyPrint(resumeOptimizedJson);
 			console.log(resumeOptimizedPrettyStr);
 		});
+
+
 
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////

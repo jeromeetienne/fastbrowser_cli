@@ -19,11 +19,12 @@ import {
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-//	ResumeHelper
+//	ResumePrettyPrint
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-export class ResumeHelper {
+export class ResumePrettyPrint {
+
 	/**
 	 * - use `Chalk` to pretty-print the ResumeJson in the terminal with colors and formatting for better readability.
 	 *
@@ -36,14 +37,14 @@ export class ResumeHelper {
 		lines.push("");
 
 		if (resumeJson.basics !== null) {
-			ResumeHelper.appendBasics(lines, resumeJson.basics);
+			ResumePrettyPrint.appendBasics(lines, resumeJson.basics);
 		}
 
 		if (resumeJson.work !== null && resumeJson.work.length > 0) {
 			lines.push(Chalk.bold.underline("Work Experience:"));
 			for (const work of resumeJson.work) {
 				const index = resumeJson.work.indexOf(work) + 1;
-				ResumeHelper.appendWork(lines, work, index);
+				ResumePrettyPrint.appendWork(lines, work, index);
 			}
 			lines.push("");
 		}
@@ -52,7 +53,7 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("Volunteer Experience:"));
 			for (const volunteer of resumeJson.volunteer) {
 				const index = resumeJson.volunteer.indexOf(volunteer) + 1;
-				ResumeHelper.appendVolunteer(lines, volunteer, index);
+				ResumePrettyPrint.appendVolunteer(lines, volunteer, index);
 			}
 			lines.push("");
 		}
@@ -61,7 +62,7 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("Education:"));
 			for (const education of resumeJson.education) {
 				const index = resumeJson.education.indexOf(education) + 1;
-				ResumeHelper.appendEducation(lines, education, index);
+				ResumePrettyPrint.appendEducation(lines, education, index);
 			}
 			lines.push("");
 		}
@@ -70,7 +71,7 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("Awards:"));
 			for (const award of resumeJson.awards) {
 				const index = resumeJson.awards.indexOf(award) + 1;
-				ResumeHelper.appendAward(lines, award, index);
+				ResumePrettyPrint.appendAward(lines, award, index);
 			}
 			lines.push("");
 		}
@@ -79,7 +80,7 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("Certificates:"));
 			for (const certificate of resumeJson.certificates) {
 				const index = resumeJson.certificates.indexOf(certificate) + 1;
-				ResumeHelper.appendCertificate(lines, certificate, index);
+				ResumePrettyPrint.appendCertificate(lines, certificate, index);
 			}
 			lines.push("");
 		}
@@ -88,7 +89,7 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("Publications:"));
 			for (const publication of resumeJson.publications) {
 				const index = resumeJson.publications.indexOf(publication) + 1;
-				ResumeHelper.appendPublication(lines, publication, index);
+				ResumePrettyPrint.appendPublication(lines, publication, index);
 			}
 			lines.push("");
 		}
@@ -97,7 +98,7 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("Skills:"));
 			for (const skill of resumeJson.skills) {
 				const index = resumeJson.skills.indexOf(skill) + 1;
-				ResumeHelper.appendSkill(lines, skill, index);
+				ResumePrettyPrint.appendSkill(lines, skill, index);
 			}
 			lines.push("");
 		}
@@ -106,7 +107,7 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("Languages:"));
 			for (const language of resumeJson.languages) {
 				const index = resumeJson.languages.indexOf(language) + 1;
-				ResumeHelper.appendLanguage(lines, language, index);
+				ResumePrettyPrint.appendLanguage(lines, language, index);
 			}
 			lines.push("");
 		}
@@ -115,7 +116,7 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("Interests:"));
 			for (const interest of resumeJson.interests) {
 				const index = resumeJson.interests.indexOf(interest) + 1;
-				ResumeHelper.appendInterest(lines, interest, index);
+				ResumePrettyPrint.appendInterest(lines, interest, index);
 			}
 			lines.push("");
 		}
@@ -124,7 +125,7 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("References:"));
 			for (const reference of resumeJson.references) {
 				const index = resumeJson.references.indexOf(reference) + 1;
-				ResumeHelper.appendReference(lines, reference, index);
+				ResumePrettyPrint.appendReference(lines, reference, index);
 			}
 			lines.push("");
 		}
@@ -133,13 +134,13 @@ export class ResumeHelper {
 			lines.push(Chalk.bold.underline("Projects:"));
 			for (const project of resumeJson.projects) {
 				const index = resumeJson.projects.indexOf(project) + 1;
-				ResumeHelper.appendProject(lines, project, index);
+				ResumePrettyPrint.appendProject(lines, project, index);
 			}
 			lines.push("");
 		}
 
 		if (resumeJson.meta !== null) {
-			ResumeHelper.appendMeta(lines, resumeJson.meta);
+			ResumePrettyPrint.appendMeta(lines, resumeJson.meta);
 		}
 
 		return lines.join("\n");
@@ -201,7 +202,7 @@ export class ResumeHelper {
 	private static appendWork(lines: string[], work: ResumeWork, index: number): void {
 		const title = work.position ?? "Unknown Position";
 		const company = work.name ?? "Unknown Company";
-		const dateRange = ResumeHelper.formatDateRange(work.startDate, work.endDate);
+		const dateRange = ResumePrettyPrint.formatDateRange(work.startDate, work.endDate);
 		lines.push(Chalk.bold(`    ${index}. ${title} @ ${company} ${Chalk.dim(dateRange)}`));
 		if (work.location !== null) {
 			lines.push(Chalk.dim(`       Location: ${work.location}`));
@@ -225,7 +226,7 @@ export class ResumeHelper {
 	private static appendVolunteer(lines: string[], volunteer: ResumeVolunteer, index: number): void {
 		const position = volunteer.position ?? "Unknown Position";
 		const organization = volunteer.organization ?? "Unknown Organization";
-		const dateRange = ResumeHelper.formatDateRange(volunteer.startDate, volunteer.endDate);
+		const dateRange = ResumePrettyPrint.formatDateRange(volunteer.startDate, volunteer.endDate);
 		lines.push(Chalk.bold(`    ${index}. ${position} @ ${organization} ${Chalk.dim(dateRange)}`));
 		if (volunteer.url !== null) {
 			lines.push(Chalk.dim(`       URL: ${volunteer.url}`));
@@ -244,7 +245,7 @@ export class ResumeHelper {
 		const institution = education.institution ?? "Unknown Institution";
 		const studyType = education.studyType ?? "";
 		const area = education.area ?? "";
-		const dateRange = ResumeHelper.formatDateRange(education.startDate, education.endDate);
+		const dateRange = ResumePrettyPrint.formatDateRange(education.startDate, education.endDate);
 		const heading = [studyType, area].filter((part) => part !== "").join(" in ");
 		lines.push(Chalk.bold(`    ${index}. ${institution} — ${heading} ${Chalk.dim(dateRange)}`));
 		if (education.url !== null) {
@@ -337,7 +338,7 @@ export class ResumeHelper {
 
 	private static appendProject(lines: string[], project: ResumeProject, index: number): void {
 		const name = project.name ?? "Unknown Project";
-		const dateRange = ResumeHelper.formatDateRange(project.startDate, project.endDate);
+		const dateRange = ResumePrettyPrint.formatDateRange(project.startDate, project.endDate);
 		lines.push(Chalk.bold(`    ${index}. ${name} ${Chalk.dim(dateRange)}`));
 		if (project.entity !== null) {
 			lines.push(Chalk.dim(`       Entity: ${project.entity}`));
