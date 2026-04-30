@@ -46,11 +46,56 @@ Malformed lines are reported on stderr (`Invalid JSON: …`) without aborting th
 
 ## Options
 
-| Flag         | Description                | Default |
-|--------------|----------------------------|---------|
-| `--no-color` | Disable colored output     | colored |
-| `--version`  | Print the package version  | —       |
-| `--help`     | Print usage help           | —       |
+| Flag                  | Description                                                  | Default |
+|-----------------------|--------------------------------------------------------------|---------|
+| `--no-color`          | Disable colored output                                       | colored |
+| `--include <kinds>`   | Comma-separated event kinds to show (whitelist)              | all     |
+| `--exclude <kinds>`   | Comma-separated event kinds to hide (blacklist)              | none    |
+| `--version`           | Print the package version                                    | —       |
+| `--help`              | Print usage help                                             | —       |
+
+### Event kinds
+
+`--include` and `--exclude` match against an event's *kind*. The known kinds are:
+
+- `text` — streamed assistant text (both `text_delta` and legacy `message_delta`)
+- `tool_use`
+- `final_message`
+- `unknown`
+- any `stream_event` subtype: `message_start`, `message_stop`, `content_block_start`, `content_block_stop`, `message_delta`, …
+
+### Filter examples
+
+Show only the assistant's text, hiding all envelope events:
+
+```bash
+claude --output-format stream-json --verbose --include-partial-messages \
+       --permission-mode auto -p "explain quantum computing like I'm 5" \
+  | npx claude_stream_viewer@latest --include text
+```
+
+Show only tool calls (useful for auditing what the model is doing):
+
+```bash
+claude --output-format stream-json --verbose --include-partial-messages \
+       --permission-mode auto -p "list files in this repo" \
+  | npx claude_stream_viewer@latest --include tool_use
+```
+
+Hide the noisy start/stop envelopes, keep everything else:
+
+```bash
+claude --output-format stream-json --verbose --include-partial-messages \
+       --permission-mode auto -p "summarize this file" \
+  | npx claude_stream_viewer@latest --exclude message_start,message_stop,content_block_start,content_block_stop
+```
+
+Combine `--include` and `--exclude` (`--exclude` wins on conflicts):
+
+```bash
+… | npx claude_stream_viewer@latest --include text,tool_use --exclude tool_use
+# → only text
+```
 
 ## Development
 

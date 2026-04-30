@@ -19,7 +19,18 @@ const __dirname = new URL('.', import.meta.url).pathname;
 
 type CliOptions = {
 	color: boolean;
+	include?: string[];
+	exclude?: string[];
 };
+
+type EventFilter = {
+	include?: string[];
+	exclude?: string[];
+};
+
+// Known event kinds the filter recognizes. Any `evt.type` from the stream_event
+// envelope is also accepted as a kind (e.g. `message_start`, `message_stop`).
+const KNOWN_EVENT_KINDS = ['text', 'tool_use', 'final_message', 'unknown'] as const;
 
 // Partial typing on purpose: stream-json's shape varies across SDK versions and
 // event subtypes, and we only consume the few fields we render. Anything we
@@ -77,57 +88,98 @@ class MainHelper {
 		console.log(colors.json(JSON.stringify(obj, null, 2)));
 	}
 
-	static handleEvent(data: ClaudeEvent) {
-		try {
-			// Newer SDKs wrap each event in a `stream_event` envelope.
-			if (data.type === 'stream_event' && data.event) {
-				const evt = data.event;
+	static classifyEvent(data: ClaudeEvent): { kind: string; render: () => void } {
+		// Newer SDKs wrap each event in a `stream_event` envelope.
+		if (data.type === 'stream_event' && data.event !== undefined) {
+			const evt = data.event;
 
-				if (evt.delta?.type === 'text_delta' && evt.delta.text) {
-					MainHelper.printText(evt.delta.text);
-					return;
-				}
-
-				if (evt.type === 'tool_use') {
-					MainHelper.printHeader('TOOL USE');
-					MainHelper.printJSON(evt);
-					return;
-				}
-
-				// `content_block_delta` is the parent envelope of `text_delta` —
-				// already rendered above, so skip it here to avoid duplicating
-				// the text stream as a JSON dump.
-				if (evt.type && evt.type !== 'content_block_delta') {
-					MainHelper.printHeader(`EVENT: ${evt.type}`);
-					MainHelper.printJSON(evt);
-					return;
-				}
+			const deltaText = evt.delta?.text;
+			if (evt.delta?.type === 'text_delta' && deltaText !== undefined && deltaText !== '') {
+				return {
+					kind: 'text',
+					render: () => MainHelper.printText(deltaText),
+				};
 			}
 
-			// Legacy format: pre-`stream_event` SDKs emit raw `message_delta`
-			// events with the text delta hanging off the root.
-			if (data.type === 'message_delta') {
-				const text = data.delta?.text;
-				if (text) {
-					MainHelper.printText(text);
-					return;
-				}
+			if (evt.type === 'tool_use') {
+				return {
+					kind: 'tool_use',
+					render: () => {
+						MainHelper.printHeader('TOOL USE');
+						MainHelper.printJSON(evt);
+					},
+				};
 			}
 
-			// Final assistant message bundling all content blocks for the turn.
-			if (data.message?.content) {
-				MainHelper.printHeader('FINAL MESSAGE');
-				for (const block of data.message.content) {
-					if (block.text) {
-						console.log(colors.text(block.text));
+			// `content_block_delta` is the parent envelope of `text_delta` —
+			// already rendered above, so skip it here to avoid duplicating
+			// the text stream as a JSON dump.
+			if (evt.type !== undefined && evt.type !== 'content_block_delta') {
+				const subtype = evt.type;
+				return {
+					kind: subtype,
+					render: () => {
+						MainHelper.printHeader(`EVENT: ${subtype}`);
+						MainHelper.printJSON(evt);
+					},
+				};
+			}
+
+			return { kind: 'content_block_delta', render: () => {} };
+		}
+
+		// Legacy format: pre-`stream_event` SDKs emit raw `message_delta`
+		// events with the text delta hanging off the root.
+		if (data.type === 'message_delta') {
+			const text = data.delta?.text;
+			if (text !== undefined && text !== '') {
+				return {
+					kind: 'text',
+					render: () => MainHelper.printText(text),
+				};
+			}
+		}
+
+		// Final assistant message bundling all content blocks for the turn.
+		const content = data.message?.content;
+		if (content !== undefined) {
+			return {
+				kind: 'final_message',
+				render: () => {
+					MainHelper.printHeader('FINAL MESSAGE');
+					for (const block of content) {
+						if (block.text !== undefined && block.text !== '') {
+							console.log(colors.text(block.text));
+						}
 					}
-				}
-				return;
-			}
+				},
+			};
+		}
 
-			// Unrecognized shape — dump it raw so the user can extend ClaudeEvent.
-			MainHelper.printHeader('UNKNOWN EVENT');
-			MainHelper.printJSON(data);
+		return {
+			kind: 'unknown',
+			render: () => {
+				MainHelper.printHeader('UNKNOWN EVENT');
+				MainHelper.printJSON(data);
+			},
+		};
+	}
+
+	static shouldRenderKind(kind: string, filter: EventFilter): boolean {
+		if (filter.include !== undefined && filter.include.length > 0) {
+			if (filter.include.includes(kind) === false) return false;
+		}
+		if (filter.exclude !== undefined && filter.exclude.includes(kind)) {
+			return false;
+		}
+		return true;
+	}
+
+	static handleEvent(data: ClaudeEvent, filter: EventFilter) {
+		try {
+			const { kind, render } = MainHelper.classifyEvent(data);
+			if (MainHelper.shouldRenderKind(kind, filter) === false) return;
+			render();
 		} catch (err) {
 			// Never let a single malformed event take down the stream — log and move on.
 			console.error(colors.error('Error processing event:'), err);
@@ -154,15 +206,26 @@ async function main(): Promise<void> {
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 
+	const parseList = (value: string): string[] =>
+		value.split(',').map((s) => s.trim()).filter((s) => s !== '');
+
+	const knownKindsHelp = `known kinds: ${KNOWN_EVENT_KINDS.join(', ')}, plus any stream_event subtype (e.g. message_start, message_stop, content_block_start)`;
+
 	const program = new Commander.Command();
 	program
 		.name('claude_stream_viewer')
 		.description('Pretty-prints Claude API stream-json events from stdin with colorized output.')
 		.version(packageVersion)
 		.option('--no-color', 'disable colored output')
+		.option('--include <kinds>', `comma-separated event kinds to show (whitelist). ${knownKindsHelp}`, parseList)
+		.option('--exclude <kinds>', `comma-separated event kinds to hide (blacklist). ${knownKindsHelp}`, parseList)
 		.parse(process.argv);
 
 	const options = program.opts<CliOptions>();
+	const filter: EventFilter = {
+		include: options.include,
+		exclude: options.exclude,
+	};
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 	//	
@@ -184,7 +247,7 @@ async function main(): Promise<void> {
 
 		try {
 			const parsed = JSON.parse(line);
-			MainHelper.handleEvent(parsed);
+			MainHelper.handleEvent(parsed, filter);
 		} catch (err) {
 			console.error(colors.error('Invalid JSON:'), line);
 		}
