@@ -5,8 +5,12 @@
 // pipe, e.g. `claude … | claude_stream_viewer`.
 
 import Readline from 'node:readline';
-import { Command } from 'commander';
+import Fs from 'node:fs';
+import * as Commander from 'commander';
 import Chalk from 'chalk';
+import Path from 'node:path';
+
+const __dirname = new URL('.', import.meta.url).pathname;
 
 type CliOptions = {
 	color: boolean;
@@ -51,18 +55,6 @@ const colors = {
 ///////////////////////////////////////////////////////////////////////////////
 
 class MainHelper {
-	static parseCliOptions(): CliOptions {
-		const program = new Command();
-		program
-			.name('claude_stream_viewer')
-			.description('Pretty-prints Claude API stream-json events from stdin with colorized output.')
-			.version('1.0.9')
-			.option('--no-color', 'disable colored output')
-			.parse(process.argv);
-
-		return program.opts<CliOptions>();
-	}
-
 	static printText(text: string) {
 		process.stdout.write(colors.text(text));
 	}
@@ -146,7 +138,32 @@ class MainHelper {
 ///////////////////////////////////////////////////////////////////////////////
 
 async function main(): Promise<void> {
-	const options = MainHelper.parseCliOptions();
+
+	const packageJsonPath = Path.join(__dirname, '..', 'package.json');
+	const packageJson: object = JSON.parse(await Fs.promises.readFile(packageJsonPath, 'utf-8'))
+	const packageVersion = (packageJson as { version?: string }).version ?? 'unknown';
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	//	
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	const program = new Commander.Command();
+	program
+		.name('claude_stream_viewer')
+		.description('Pretty-prints Claude API stream-json events from stdin with colorized output.')
+		.version(packageVersion)
+		.option('--no-color', 'disable colored output')
+		.parse(process.argv);
+
+	const options = program.opts<CliOptions>();
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	//	
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
 	if (options.color === false) {
 		Chalk.level = 0;
 	}
