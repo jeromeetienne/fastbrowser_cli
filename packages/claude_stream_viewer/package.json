@@ -28,6 +28,15 @@
     "author": "Jerome Etienne <jerome.etienne@gmail.com>",
     "license": "MIT",
     "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jeromeetienne/skillmd_collection.git",
+        "directory": "packages/claude_stream_viewer"
+    },
+    "homepage": "https://github.com/jeromeetienne/skillmd_collection/tree/main/packages/claude_stream_viewer#readme",
+    "bugs": {
+        "url": "https://github.com/jeromeetienne/skillmd_collection/issues"
+    },
     "dependencies": {
         "chalk": "^5.6.2",
         "commander": "^12.1.0"

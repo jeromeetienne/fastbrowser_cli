@@ -17,6 +17,15 @@
     "keywords": [],
     "author": "",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jeromeetienne/skillmd_collection.git",
+        "directory": "packages/a11y_parse"
+    },
+    "homepage": "https://github.com/jeromeetienne/skillmd_collection/tree/main/packages/a11y_parse#readme",
+    "bugs": {
+        "url": "https://github.com/jeromeetienne/skillmd_collection/issues"
+    },
     "dependencies": {
         "@modelcontextprotocol/sdk": "^1.29.0",
         "commander": "^14.0.3",
