@@ -2,10 +2,14 @@
 
 Pretty-prints [Claude Code](https://claude.com/claude-code) `stream-json` events from stdin with colorized output. Drop it at the end of a `claude --output-format stream-json` pipe to read the stream as a human instead of as raw JSON.
 
+![claude_stream_viewer demo](demo/claude_stream_viewer.gif)
+
 ## Requirements
 
 - Node.js 20+
 - An upstream process emitting [Claude Code stream-json events](https://docs.claude.com/en/docs/claude-code/sdk) (typically the `claude` CLI run with `--output-format stream-json`)
+
+
 
 ## Install
 
