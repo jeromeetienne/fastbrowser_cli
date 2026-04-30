@@ -2,14 +2,14 @@
     "name": "claude_stream_viewer",
     "version": "1.0.0",
     "description": "Claude Stream Viewer - Pretty-prints Claude API stream-json events from stdin with colorized output.",
-    "main": "dist/src/claude_stream_viewer.js",
+    "main": "dist/src/claude-stream-viewer.js",
     "bin": {
-        "claude_stream_viewer": "./dist/src/claude_stream_viewer.js"
+        "claude_stream_viewer": "./dist/src/claude-stream-viewer.js"
     },
     "scripts": {
-        "dev": "tsx ./src/claude_stream_viewer.ts",
+        "dev": "tsx ./src/claude-stream-viewer.ts",
         "build": "tsc -p tsconfig.build.json",
-        "postbuild": "chmod +x ./dist/src/claude_stream_viewer.js",
+        "postbuild": "chmod +x ./dist/src/claude-stream-viewer.js",
         "typecheck": "tsc --noEmit",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
